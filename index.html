@@ -3,31 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MizarWeb | Agencia de Desarrollo Digital</title>
+    <title>Mizar Web | Agencia de Desarrollo Digital</title>
+    <meta name="description" content="Agencia de desarrollo web, IA y automatización fundada por Facundo Villalba y Juan Pablo Keller.">
+    
+    <!-- Fuentes: Orbitron (Futurista/Títulos) y Montserrat (Lectura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<canvas id="star-canvas"></canvas>
 
-<main class="hero-section maintenance-mode" id="inicio">
-    <div class="hero-content centered-content">
-        
-        <div class="icon-container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="maintenance-gear">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
+    <!-- PRELOADER SOFISTICADO -->
+    <div id="preloader">
+        <div class="loader-container">
+            <div class="loader-ring ring-one"></div>
+            <div class="loader-ring ring-two"></div>
+            <div class="loader-core"></div>
+        </div>
+        <div class="loader-text-container">
+            <span class="loader-text" data-final="MIZAR WEB">CARGANDO</span>
+            <div class="loader-bar"><div class="bar-fill"></div></div>
+        </div>
+    </div>
+
+    <!-- Fondo Dinámico (Canvas Estrellas + Gradientes CSS) -->
+    <div id="background-layer" class="bg-gradient-home"></div>
+    <canvas id="starfield"></canvas>
+
+    <!-- Header Navegación -->
+    <header class="main-header">
+        <div class="logo-container">
+            <div class="star-wrapper">
+                <div class="binary-star-icon">
+                    <div class="star s1"></div>
+                    <div class="star s2"></div>
+                </div>
+            </div>
+            <span class="logo-text">MIZAR WEB</span>
         </div>
 
-        <h1>Sitio en <span class="highlight">Mantenimiento</span></h1>
-        <p class="description" style="margin: 0 auto;">
-            Estamos ajustando los motores de la nave. <br> Volveremos a orbitar en breve.
-        </p>
+        <nav class="desktop-nav">
+            <button class="nav-btn active" data-target="home">Inicio</button>
+            <button class="nav-btn" data-target="about">Nosotros</button>
+            <button class="nav-btn" data-target="services">Servicios</button>
+            <button class="nav-btn" data-target="portfolio">Proyectos</button>
+            <button class="nav-btn" data-target="contact">Contacto</button>
+        </nav>
 
+        <button class="menu-toggle" aria-label="Abrir menú">
+            <span class="bar b1"></span>
+            <span class="bar b2"></span>
+            <span class="bar b3"></span>
+        </button>
+    </header>
+
+    <!-- Menú Móvil Overlay -->
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <button class="mob-nav-btn" data-target="home">Inicio</button>
+            <button class="mob-nav-btn" data-target="about">Nosotros</button>
+            <button class="mob-nav-btn" data-target="services">Servicios</button>
+            <button class="mob-nav-btn" data-target="portfolio">Proyectos</button>
+            <button class="mob-nav-btn" data-target="contact">Contacto</button>
+        </nav>
     </div>
-</main>
 
-<script src="script.js"></script>
+    <!-- Contenedor Principal de Secciones -->
+    <main id="main-content">
+
+        <!-- SECCIÓN 1: INICIO -->
+        <section id="home" class="section active-section">
+            <div class="content-wrapper center-content">
+                <h1 class="glitch-title" data-text="SOLUCIONES DIGITALES">SOLUCIONES DIGITALES</h1>
+                <p class="subtitle fade-in">Desarrollo Web Full Stack + Inteligencia Artificial</p>
+                <div class="hero-actions fade-in-delay">
+                    <button class="btn-primary glow-effect nav-trigger" data-target="portfolio">Ver Trabajos</button>
+                    <button class="btn-secondary nav-trigger" data-target="contact">Cotizar Proyecto</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: NOSOTROS (Con Sub-Navegación) -->
+        <section id="about" class="section">
+            <div class="content-wrapper">
+                
+                <!-- Sub Header de la Sección -->
+                <div class="about-header-container">
+                    <h2 class="section-title">Nuestro Universo</h2>
+                    <nav class="about-sub-nav">
+                        <button class="sub-nav-btn active" data-sub="general">Sobre Nosotros</button>
+                        <button class="sub-nav-btn" data-sub="skills">Habilidades</button>
+                        <button class="sub-nav-btn" data-sub="tools">Herramientas</button>
+                        <button class="sub-nav-btn" data-sub="reviews">Reseñas</button>
+                    </nav>
+                </div>
+                
+                <!-- Contenedor de las Sub-Pestañas -->
+                <div class="about-content-area">
+                    
+                    <!-- Pestaña 1: General (Información + Equipo) -->
+                    <div class="about-tab-content active" id="tab-general">
+                        <p class="about-description">
+                            En <strong>Mizar Web</strong> fusionamos diseño innovador, desarrollo robusto y el poder de la Inteligencia Artificial. Somos una agencia digital binaria conformada por profesionales apasionados por crear soluciones que no solo se ven increíbles, sino que rinden al máximo nivel. Nos especializamos en transformar ideas complejas en experiencias web fluidas, optimizadas y escalables para llevar tu presencia digital a la siguiente órbita.
+                        </p>
+                        
+                        <div class="founders-container">
+                            <div class="founder-card glass-panel">
+                                <div class="founder-img">
+                                    <img src="images/face-photo.jpeg" alt="Facundo Villalba">
+                                </div>
+                                <div class="founder-info">
+                                    <h3>Facundo Villalba</h3>
+                                    <span class="role">Co-Founder & Full Stack Dev</span>
+                                    <p>Especialista en integración de IA, automatización de procesos y arquitecturas web escalables.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="founder-card glass-panel">
+                                <div class="founder-img">
+                                    <div class="no-photo"><i class="fas fa-user-tie"></i></div>
+                                </div>
+                                <div class="founder-info">
+                                    <h3>Juan Pablo Keller</h3>
+                                    <span class="role">Co-Founder & Lead Developer</span>
+                                    <p>Experto en Backend, diseño de interfaces gráficas y desarrollo de software a medida.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pestaña 2: Habilidades -->
+                    <div class="about-tab-content" id="tab-skills">
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <h4>Frontend Avanzado</h4>
+                                <p>Desarrollo de interfaces inmersivas, fluidas y con animaciones complejas.</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-server"></i>
+                                <h4>Backend & APIs</h4>
+                                <p>Arquitecturas seguras, eficientes y gestión de bases de datos relacionales y NoSQL.</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-brain"></i>
+                                <h4>Integración IA</h4>
+                                <p>Automatización de tareas y modelos generativos aplicados a negocios reales.</p>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <h4>UI/UX Design</h4>
+                                <p>Diseño centrado en la experiencia del usuario, accesibilidad y alta conversión.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pestaña 3: Herramientas -->
+                    <div class="about-tab-content" id="tab-tools">
+                        <div class="tools-grid">
+                            <div class="tool-item"><i class="fab fa-react"></i><span>React & Next.js</span></div>
+                            <div class="tool-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+                            <div class="tool-item"><i class="fab fa-python"></i><span>Python</span></div>
+                            <div class="tool-item"><i class="fab fa-figma"></i><span>Figma</span></div>
+                            <div class="tool-item"><i class="fab fa-aws"></i><span>Cloud Solutions</span></div>
+                            <div class="tool-item"><i class="fab fa-git-alt"></i><span>Git & Control de Versiones</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Pestaña 4: Reseñas (Carrusel movido aquí) -->
+                    <div class="about-tab-content" id="tab-reviews">
+                        <div class="testimonials-wrapper">
+                            <div class="carousel-container">
+                                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                                <div class="carousel-track-container">
+                                    <ul class="carousel-track">
+                                        <li class="carousel-slide current-slide">
+                                            <blockquote>
+                                                "Mizar Web transformó completamente nuestra presencia digital. La automatización nos ahorró horas de trabajo."
+                                                <cite>- María González, CEO TechSolutions</cite>
+                                            </blockquote>
+                                        </li>
+                                        <li class="carousel-slide">
+                                            <blockquote>
+                                                "Profesionales, rápidos y con un diseño impecable. Entendieron nuestra visión desde el primer día."
+                                                <cite>- Carlos Ruiz, Director de Marketing</cite>
+                                            </blockquote>
+                                        </li>
+                                        <li class="carousel-slide">
+                                            <blockquote>
+                                                "La integración de IA en nuestro sitio web ha mejorado la atención al cliente un 200%."
+                                                <cite>- Sofía Martínez, E-commerce Manager</cite>
+                                            </blockquote>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- Fin about-content-area -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: SERVICIOS -->
+        <section id="services" class="section">
+            <div class="content-wrapper">
+                <h2 class="section-title">Nuestras Capacidades</h2>
+                <div class="services-grid">
+                    
+                    <!-- Servicio 1 -->
+                    <div class="service-card">
+                        <div class="card-initial">
+                            <i class="fas fa-code service-icon"></i>
+                            <h3>Desarrollo Web</h3>
+                            <p class="card-desc">Sitios de alto impacto.</p>
+                        </div>
+                        <div class="card-hover-content">
+                            <h3>Web Full Stack</h3>
+                            <ul>
+                                <li>Landing Pages React/Angular</li>
+                                <li>E-commerce Avanzado</li>
+                                <li>Optimización SEO</li>
+                                <li>Webs Corporativas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 2 -->
+                    <div class="service-card">
+                        <div class="card-initial">
+                            <i class="fas fa-brain service-icon"></i>
+                            <h3>Herramientas IA</h3>
+                            <p class="card-desc">Automatización inteligente.</p>
+                        </div>
+                        <div class="card-hover-content">
+                            <h3>Inteligencia Artificial</h3>
+                            <ul>
+                                <li>Integración API OpenAI/Gemini</li>
+                                <li>Chatbots Personalizados</li>
+                                <li>Automatización de Procesos</li>
+                                <li>Análisis de Datos</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 3 -->
+                    <div class="service-card">
+                        <div class="card-initial">
+                            <i class="fas fa-mobile-alt service-icon"></i>
+                            <h3>Apps & Software</h3>
+                            <p class="card-desc">Soluciones a medida.</p>
+                        </div>
+                        <div class="card-hover-content">
+                            <h3>Software Custom</h3>
+                            <ul>
+                                <li>Aplicaciones Web Progresivas (PWA)</li>
+                                <li>Software de Gestión (CRM/ERP)</li>
+                                <li>Desarrollo de Scripts Python</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 4 -->
+                    <div class="service-card">
+                        <div class="card-initial">
+                            <i class="fab fa-microsoft service-icon"></i>
+                            <h3>Microsoft Tools</h3>
+                            <p class="card-desc">Gestión y Productividad.</p>
+                        </div>
+                        <div class="card-hover-content">
+                            <h3>Suite Microsoft</h3>
+                            <ul>
+                                <li>Automatización Excel (VBA)</li>
+                                <li>Dashboards Power BI</li>
+                                <li>Integraciones Office 365</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 5 -->
+                    <div class="service-card">
+                        <div class="card-initial">
+                            <i class="fas fa-share-alt service-icon"></i>
+                            <h3>Social Media</h3>
+                            <p class="card-desc">Crecimiento orgánico.</p>
+                        </div>
+                        <div class="card-hover-content">
+                            <h3>Redes Sociales</h3>
+                            <ul>
+                                <li>Estrategia de Contenidos</li>
+                                <li>Automatización de Posts</li>
+                                <li>Gestión de Comunidad</li>
+                                <li>Meta Ads</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                     <!-- Servicio 6 -->
+                     <div class="service-card">
+                        <div class="card-initial">
+                            <i class="fas fa-pen-nib service-icon"></i>
+                            <h3>Diseño Gráfico</h3>
+                            <p class="card-desc">Identidad Visual.</p>
+                        </div>
+                        <div class="card-hover-content">
+                            <h3>Diseño & UI/UX</h3>
+                            <ul>
+                                <li>Branding e Identidad</li>
+                                <li>Prototipado Figma</li>
+                                <li>Diseño para Redes</li>
+                                <li>Edición Multimedia</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: PORTFOLIO -->
+        <section id="portfolio" class="section">
+            <div class="content-wrapper full-width">
+                <div class="portfolio-header">
+                    <h2 class="section-title">Trabajos Realizados</h2>
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="app">Apps</button>
+                        <button class="filter-btn" data-filter="design">Diseño</button>
+                    </div>
+                </div>
+
+                <!-- Contenedor Scroll Horizontal -->
+                <div class="horizontal-scroll-container">
+                    <div class="portfolio-track">
+                        <!-- Proyecto 1 -->
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item-abogados.png" alt="Estudio Jurídico" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Rodríguez & Asociados</h4>
+                                    <p>Web Corporativa</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 2 -->
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item-blackforce.png" alt="Blackforce Gym" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Blackforce Gym</h4>
+                                    <p>Landing Page Dark Mode</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 3 -->
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item.amatista.png" alt="Hotel Amatista" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Hotel Amatista</h4>
+                                    <p>Sistema de Reservas</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 4 -->
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item-turismoarg.png" alt="Turismo Arg" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Turismo Argentina</h4>
+                                    <p>Catálogo Turístico</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Proyecto 5 -->
+                        <div class="project-card" data-category="design">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item-cocina.png" alt="Ebook Cocina" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Sabores Expertos</h4>
+                                    <p>Diseño Editorial / Landing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Proyecto 6 -->
+                         <div class="project-card" data-category="app">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item-companiausa.png" alt="Tu Compañía en USA" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Tu Compañía en USA</h4>
+                                    <p>App Web de Gestión</p>
+                                </div>
+                            </div>
+                        </div>
+                         <!-- Más proyectos placeholder para probar scroll -->
+                         <div class="project-card" data-category="web">
+                            <div class="project-img-container">
+                                <img src="images/images proyects/item.chascomus.png" alt="Nautica" loading="lazy">
+                                <div class="project-overlay">
+                                    <h4>Náutica Chascomús</h4>
+                                    <p>E-commerce Náutico</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="scroll-hint">
+                    <i class="fas fa-chevron-right"></i> Desliza para ver más
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 5: CONTACTO -->
+        <section id="contact" class="section">
+            <div class="content-wrapper split-layout">
+                <div class="contact-info-col">
+                    <h2 class="section-title">Hablemos</h2>
+                    <p>Estamos listos para hacer realidad tu proyecto. Cuéntanos qué necesitas.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="method glass-panel">
+                            <i class="fas fa-envelope"></i>
+                            <span>contacto@mizarweb.com</span>
+                        </div>
+                        <div class="method glass-panel">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>+54 3751 340173</span>
+                        </div>
+                        <div class="method glass-panel">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Posadas, Misiones, Arg.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-col">
+                    <form class="glass-form">
+                        <div class="form-group">
+                            <input type="text" required placeholder=" ">
+                            <label>Nombre</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" required placeholder=" ">
+                            <label>Email</label>
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option value="" disabled selected>Tipo de Servicio</option>
+                                <option value="web">Desarrollo Web</option>
+                                <option value="ia">Inteligencia Artificial</option>
+                                <option value="design">Diseño Gráfico</option>
+                                <option value="other">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea required placeholder=" "></textarea>
+                            <label>Mensaje</label>
+                        </div>
+                        <button type="submit" class="btn-primary full-width">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

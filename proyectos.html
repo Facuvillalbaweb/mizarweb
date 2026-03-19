@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mizar Web | Proyectos</title>
+    <meta name="description" content="Nuestros trabajos recientes y casos de éxito.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="preloader"><div class="loader-container"><div class="loader-ring ring-one"></div><div class="loader-ring ring-two"></div><div class="loader-core"></div></div><div class="loader-text-container"><span class="loader-text" data-final="PORTAFOLIO">CARGANDO</span><div class="loader-bar"><div class="bar-fill"></div></div></div></div>
+
+    <div id="background-layer" class="bg-gradient-portfolio"></div>
+    <canvas id="starfield"></canvas>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <div class="star-wrapper"><div class="binary-star-icon"><div class="star s1"></div><div class="star s2"></div></div></div>
+            <span class="logo-text">MIZAR WEB</span>
+        </div>
+        <nav class="desktop-nav">
+            <a href="index.html" class="nav-btn">Inicio</a>
+            <a href="nosotros.html" class="nav-btn">Nosotros</a>
+            <a href="servicios.html" class="nav-btn">Servicios</a>
+            <a href="proyectos.html" class="nav-btn active">Proyectos</a>
+            <a href="contacto.html" class="nav-btn">Contacto</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Abrir menú"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
+    </header>
+
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mob-nav-btn">Inicio</a>
+            <a href="nosotros.html" class="mob-nav-btn">Nosotros</a>
+            <a href="servicios.html" class="mob-nav-btn">Servicios</a>
+            <a href="proyectos.html" class="mob-nav-btn">Proyectos</a>
+            <a href="contacto.html" class="mob-nav-btn">Contacto</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+        <section class="section section-portfolio">
+            <div class="content-wrapper">
+
+                <!-- HEADER -->
+                <div class="portfolio-header">
+                    <div class="portfolio-title-group">
+                        <h2 class="section-title">Trabajos Realizados</h2>
+                        <p class="portfolio-subtitle">Selección de proyectos destacados</p>
+                    </div>
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">Todos</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="linkhub">Linkhub</button>
+                        <button class="filter-btn" data-filter="design">Diseño</button>
+                    </div>
+                </div>
+
+                <!-- BENTO GRID DESTACADO -->
+                <div class="bento-featured">
+
+                    <!-- Card 1: GRANDE izquierda -->
+                    <div class="project-card bento-main" data-category="web">
+                        <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0a2540 0%, #1a4a7a 100%);">
+                            <img src="images/images-proyects/item.amatista.png" alt="Hotel Amatista" loading="lazy">
+                            <div class="card-base-info">
+                                <span class="overlay-tag">Sistema de Reservas</span>
+                                <h4>Hotel Amatista</h4>
+                            </div>
+                            <div class="project-overlay">
+                                <p>Plataforma de reservas con disponibilidad en tiempo real e integración de pagos.</p>
+                                <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-number">01</div>
+                    </div>
+
+                    <!-- Card 2: arriba derecha -->
+                    <div class="project-card bento-sm" data-category="web">
+                        <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0d3349 0%, #0a4a6e 100%);">
+                            <img src="images/images-proyects/item.chascomus.png" alt="Guardería Náutica" loading="lazy">
+                            <div class="card-base-info">
+                                <span class="overlay-tag">Web Institucional</span>
+                                <h4>Guardería Náutica</h4>
+                            </div>
+                            <div class="project-overlay">
+                                <p>Sitio con galería, agenda de eventos y formulario de inscripciones online.</p>
+                                <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-number">02</div>
+                    </div>
+
+                    <!-- Card 3: abajo derecha -->
+                    <div class="project-card bento-sm" data-category="web">
+                        <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0d1f0d 0%, #1a3d1a 100%);">
+                            <img src="images/images-proyects/item-blackforce.png" alt="FitLife Gym" loading="lazy">
+                            <div class="card-base-info">
+                                <span class="overlay-tag">One Page</span>
+                                <h4>FitLife Gym</h4>
+                            </div>
+                            <div class="project-overlay">
+                                <p>One page dark mode para gimnasio con animaciones de alto impacto.</p>
+                                <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="card-number">03</div>
+                    </div>
+
+                </div>
+
+                <!-- DIVISOR + LABEL -->
+                <div class="carousel-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-label">
+                        <i class="fas fa-grip-lines"></i>
+                        <span>Más proyectos</span>
+                    </div>
+                    <div class="carousel-nav-btns">
+                        <button class="carousel-arrow" id="carouselPrev" aria-label="Anterior">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-arrow" id="carouselNext" aria-label="Siguiente">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARRUSEL HORIZONTAL -->
+                <div class="horizontal-scroll-container" id="portfolioCarousel">
+                    <div class="portfolio-track">
+
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #1a1a0d 0%, #2e2e10 100%);">
+                                <img src="images/images-proyects/item-abogados.png" alt="Estudio Jurídico" loading="lazy">
+                                <div class="card-base-info">
+                                    <span class="overlay-tag">Web Corporativa</span>
+                                    <h4>Rodríguez & Asociados</h4>
+                                </div>
+                                <div class="project-overlay">
+                                    <p>Sitio institucional para estudio jurídico con formulario de consultas integrado.</p>
+                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0a2a40 0%, #0f4060 100%);">
+                                <img src="images/images-proyects/item-turismoarg.png" alt="Turismo Arg" loading="lazy">
+                                <div class="card-base-info">
+                                    <span class="overlay-tag">Web Institucional</span>
+                                    <h4>Turismo Argentina</h4>
+                                </div>
+                                <div class="project-overlay">
+                                    <p>Portal de destinos con filtros avanzados y sistema de favoritos.</p>
+                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-category="design">
+                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #2a1a00 0%, #4a3000 100%);">
+                                <img src="images/images-proyects/item-cocina.png" alt="Ebook Cocina" loading="lazy">
+                                <div class="card-base-info">
+                                    <span class="overlay-tag">Diseño Editorial</span>
+                                    <h4>Sabores Expertos</h4>
+                                </div>
+                                <div class="project-overlay">
+                                    <p>Diseño de ebook y landing page para marca gastronómica premium.</p>
+                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-category="linkhub">
+                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #050a14 0%, #0a1428 100%);">
+                                <img src="images/images-proyects/item-companiausa.png" alt="Tu Compañía en USA" loading="lazy">
+                                <div class="card-base-info">
+                                    <span class="overlay-tag">Linkhub</span>
+                                    <h4>Tu Compañía en USA</h4>
+                                </div>
+                                <div class="project-overlay">
+                                    <p>Plataforma de gestión para emprendedores argentinos con operaciones en EE.UU.</p>
+                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card" data-category="web">
+                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #001a2e 0%, #00304d 100%);">
+                                <img src="images/images-proyects/item.chascomus.png" alt="Náutica Chascomús" loading="lazy">
+                                <div class="card-base-info">
+                                    <span class="overlay-tag">E-commerce</span>
+                                    <h4>Náutica Chascomús</h4>
+                                </div>
+                                <div class="project-overlay">
+                                    <p>Tienda online especializada en equipamiento náutico con catálogo dinámico.</p>
+                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Carousel arrows
+        const carousel = document.getElementById('portfolioCarousel');
+        document.getElementById('carouselNext')?.addEventListener('click', () => {
+            carousel.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+        document.getElementById('carouselPrev')?.addEventListener('click', () => {
+            carousel.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

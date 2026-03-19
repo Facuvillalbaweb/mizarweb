@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Estrella 1 (Cyan) -->
+  <circle cx="12" cy="10" r="6" fill="#64ffda" />
+  <circle cx="12" cy="10" r="8" fill="none" stroke="#64ffda" stroke-width="1" opacity="0.5" />
+  
+  <!-- Estrella 2 (blue) -->
+  <circle cx="22" cy="28" r="5" fill="#00b4d8" />
+  <circle cx="22" cy="28" r="7" fill="none" stroke="#00b4d8" stroke-width="1" opacity="0.5" />
+  
+  <!-- Línea de conexión orbital opcional (Descomenta si la quieres) -->
+  <!-- <path d="M16 10 C 22 17, 10 17, 16 24" fill="none" stroke="#e6f1ff" stroke-width="0.5" opacity="0.3" /> -->
+</svg>

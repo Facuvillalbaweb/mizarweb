@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mizar Web | Servicios</title>
+    <meta name="description" content="Nuestros servicios de desarrollo, diseño y más.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="preloader"><div class="loader-container"><div class="loader-ring ring-one"></div><div class="loader-ring ring-two"></div><div class="loader-core"></div></div><div class="loader-text-container"><span class="loader-text" data-final="SERVICIOS">CARGANDO</span><div class="loader-bar"><div class="bar-fill"></div></div></div></div>
+
+    <div id="background-layer" class="bg-gradient-services"></div>
+    <canvas id="starfield"></canvas>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <div class="star-wrapper"><div class="binary-star-icon"><div class="star s1"></div><div class="star s2"></div></div></div>
+            <span class="logo-text">MIZAR WEB</span>
+        </div>
+        <nav class="desktop-nav">
+            <a href="index.html" class="nav-btn">Inicio</a>
+            <a href="nosotros.html" class="nav-btn">Nosotros</a>
+            <a href="servicios.html" class="nav-btn active">Servicios</a>
+            <a href="proyectos.html" class="nav-btn">Proyectos</a>
+            <a href="contacto.html" class="nav-btn">Contacto</a>
+        </nav>
+        <button class="menu-toggle" aria-label="Abrir menú"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
+    </header>
+
+    <div class="mobile-menu-overlay">
+        <nav class="mobile-nav">
+            <a href="index.html" class="mob-nav-btn">Inicio</a>
+            <a href="nosotros.html" class="mob-nav-btn">Nosotros</a>
+            <a href="servicios.html" class="mob-nav-btn">Servicios</a>
+            <a href="proyectos.html" class="mob-nav-btn">Proyectos</a>
+            <a href="contacto.html" class="mob-nav-btn">Contacto</a>
+        </nav>
+    </div>
+
+    <main id="main-content">
+        <section class="section">
+            <div class="content-wrapper">
+                <h2 class="section-title">Nuestras Capacidades</h2>
+                <div class="services-grid">
+                    <div class="service-card"><div class="card-initial"><i class="fas fa-code service-icon"></i><h3>Desarrollo Web</h3><p class="card-desc">Sitios de alto impacto.</p></div><div class="card-hover-content"><h3>Web Full Stack</h3><ul><li>Landing Pages React/Angular</li><li>E-commerce Avanzado</li><li>Optimización SEO</li><li>Webs Corporativas</li></ul></div></div>
+                    <div class="service-card"><div class="card-initial"><i class="fas fa-brain service-icon"></i><h3>Herramientas IA</h3><p class="card-desc">Automatización inteligente.</p></div><div class="card-hover-content"><h3>Inteligencia Artificial</h3><ul><li>Integración API OpenAI/Gemini</li><li>Chatbots Personalizados</li><li>Automatización de Procesos</li><li>Análisis de Datos</li></ul></div></div>
+                    <div class="service-card"><div class="card-initial"><i class="fas fa-mobile-alt service-icon"></i><h3>Apps & Software</h3><p class="card-desc">Soluciones a medida.</p></div><div class="card-hover-content"><h3>Software Custom</h3><ul><li>Aplicaciones Web Progresivas (PWA)</li><li>Software de Gestión (CRM/ERP)</li><li>Desarrollo de Scripts Python</li></ul></div></div>
+                    <div class="service-card"><div class="card-initial"><i class="fab fa-microsoft service-icon"></i><h3>Microsoft Tools</h3><p class="card-desc">Gestión y Productividad.</p></div><div class="card-hover-content"><h3>Suite Microsoft</h3><ul><li>Automatización Excel (VBA)</li><li>Dashboards Power BI</li><li>Integraciones Office 365</li></ul></div></div>
+                    <div class="service-card"><div class="card-initial"><i class="fas fa-share-alt service-icon"></i><h3>Social Media</h3><p class="card-desc">Crecimiento orgánico.</p></div><div class="card-hover-content"><h3>Redes Sociales</h3><ul><li>Estrategia de Contenidos</li><li>Automatización de Posts</li><li>Gestión de Comunidad</li><li>Meta Ads</li></ul></div></div>
+                    <div class="service-card"><div class="card-initial"><i class="fas fa-pen-nib service-icon"></i><h3>Diseño Gráfico</h3><p class="card-desc">Identidad Visual.</p></div><div class="card-hover-content"><h3>Diseño & UI/UX</h3><ul><li>Branding e Identidad</li><li>Prototipado Figma</li><li>Diseño para Redes</li><li>Edición Multimedia</li></ul></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

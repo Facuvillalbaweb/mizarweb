@@ -2,65 +2,168 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mizar Web | Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Inicio | Mizar Web</title>
     <meta name="description" content="Agencia de desarrollo web, IA y automatización fundada por Facundo Villalba y Juan Pablo Keller.">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#050a14">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-home">
     <div id="preloader"><div class="loader-container"><div class="loader-ring ring-one"></div><div class="loader-ring ring-two"></div><div class="loader-core"></div></div><div class="loader-text-container"><span class="loader-text" data-final="MIZAR WEB">CARGANDO</span><div class="loader-bar"><div class="bar-fill"></div></div></div></div>
 
     <div id="background-layer" class="bg-gradient-home"></div>
     <canvas id="starfield"></canvas>
 
+    <a href="#main-content" class="skip-link">Ir al contenido</a>
+
     <header class="main-header">
-        <div class="logo-container">
-            <div class="star-wrapper">
-                <div class="binary-star-icon">
-                    <div class="star s1"></div>
-                    <div class="star s2"></div>
-                </div>
-            </div>
+        <a href="index.html" class="logo-container">
+            <div class="star-wrapper"><div class="binary-star-icon"><div class="star s1"></div><div class="star s2"></div></div></div>
             <span class="logo-text">MIZAR WEB</span>
-        </div>
+        </a>
         <nav class="desktop-nav">
-            <a href="index.html" class="nav-btn active">Inicio</a>
-            <a href="nosotros.html" class="nav-btn">Nosotros</a>
-            <a href="servicios.html" class="nav-btn">Servicios</a>
-            <a href="proyectos.html" class="nav-btn">Proyectos</a>
-            <a href="contacto.html" class="nav-btn">Contacto</a>
+            <a href="index.html" class="nav-btn active" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
-        <button class="menu-toggle" aria-label="Abrir menú"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
     </header>
 
     <div class="mobile-menu-overlay">
         <nav class="mobile-nav">
-            <a href="index.html" class="mob-nav-btn">Inicio</a>
-            <a href="nosotros.html" class="mob-nav-btn">Nosotros</a>
-            <a href="servicios.html" class="mob-nav-btn">Servicios</a>
-            <a href="proyectos.html" class="mob-nav-btn">Proyectos</a>
-            <a href="contacto.html" class="mob-nav-btn">Contacto</a>
+            <a href="index.html" class="mob-nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="mob-nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="mob-nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="mob-nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
+        <div class="mobile-social-row">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="mobile-menu-legal">
+            <a href="terminos.html">Términos y Condiciones</a>
+            <span aria-hidden="true">·</span>
+            <a href="privacidad.html">Políticas de Privacidad</a>
+        </div>
     </div>
 
     <main id="main-content">
-        <section class="section">
-            <div class="content-wrapper center-content">
-                <h1 class="glitch-title" data-text="SOLUCIONES DIGITALES">SOLUCIONES DIGITALES</h1>
-                <p class="subtitle fade-in">Desarrollo Web Full Stack + Inteligencia Artificial</p>
-                <div class="hero-actions fade-in-delay">
-                    <a href="proyectos.html" class="btn-primary glow-effect" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Ver Trabajos</a>
-                    <a href="contacto.html" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">Cotizar Proyecto</a>
+        <section class="section section-home">
+            <div class="content-wrapper">
+
+                <div class="hero-block center-content">
+
+                    <!-- FILA 1 — Texto principal + Integrantes -->
+                    <div class="hero-reviews-content">
+                        <div class="hero-text-container">
+                            <p class="subtitle fade-in">Hola, ¿cómo estás?</p>
+                            <h1 class="glitch-title" data-text="¿Empezamos a crear tus ideas?">¿Empezamos a crear tus ideas?</h1>
+                            <div class="hero-actions fade-in-delay">
+                                <a href="proyectos.html" class="btn-primary glow-effect" data-label="Trabajos"><span>Trabajos</span></a>
+                                <a href="contacto.html" class="btn-secondary" data-label="Hablanos"><span>Hablanos</span></a>
+                            </div>
+                        </div>
+
+                        <div class="founders-container">
+                            <div class="about-header-container">
+                                <h2 class="section-title title-about-hero">Integrantes</h2>
+                            </div>
+                            <div class="founder-card glass-panel">
+                                <div class="founder-img"><img src="images/facundo-villalba.jpeg" alt="Facundo Villalba" loading="lazy" width="126" height="126"></div>
+                                <div class="founder-info">
+                                    <h3>Facundo Villalba</h3>
+                                    <span class="role">Fundador &amp; Full Stack Dev</span>
+                                    <p>Especialista en Frontend, automatización de procesos e integración de Inteligencia Artificial.</p>
+                                </div>
+                            </div>
+                            <div class="founder-card glass-panel">
+                                <div class="founder-img"><img src="images/juanpablo-keller.jpeg" alt="Juan Pablo Keller" loading="lazy" width="126" height="126"></div>
+                                <div class="founder-info">
+                                    <h3>Juan Pablo Keller</h3>
+                                    <span class="role">Co-Fundador &amp; Lead Developer</span>
+                                    <p>Hábil en Backend, optimización de codigo y eficiencia en sistemas mediante Inteligencia Artificial.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FILA 2 — Somos Mizar + Carrusel de reseñas -->
+                    <div class="about-founders-container">
+                        <div class="content-about-and-bio">
+                            <div class="about-header-container">
+                                <h2 class="section-title title-about-hero">Somos Mizar</h2>
+                            </div>
+                            <p class="about-description">
+                                En <strong>Mizar Web</strong> fusionamos diseño innovador, desarrollo robusto y el poder de la Inteligencia Artificial. Somos una agencia digital conformada por profesionales apasionados por crear soluciones que no solo se ven increíbles, sino que rinden al máximo nivel. Nos especializamos en transformar ideas complejas en experiencisas web fluidas, optimizadas y escalables para llevar tu presencia digital a la siguiente nivel.
+                            </p>
+                        </div>
+
+                        <div class="content-button">
+                            <div class="reviews-rail glass-panel" id="reviewsRail" tabindex="0" role="group" aria-roledescription="carrusel" aria-label="Reseñas de clientes">
+                                <div class="reviews-rail-head">
+                                    <span class="reviews-rail-label"><i class="fas fa-comment-dots" aria-hidden="true"></i> Reseñas</span>
+                                    <div class="reviews-dots" id="reviewsDots" role="tablist" aria-label="Seleccionar reseña"></div>
+                                </div>
+
+                                <div class="reviews-viewport">
+                                    <ul class="reviews-track" id="reviewsTrack">
+                                        <li class="review-slide is-current">
+                                            <div class="review-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                                            <span class="review-name">María González <small>CEO TechSolutions</small></span>
+                                            <blockquote>"Mizar Web transformó completamente nuestra presencia digital. La automatización nos ahorró horas de trabajo."</blockquote>
+                                        </li>
+                                        <li class="review-slide">
+                                            <div class="review-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                                            <span class="review-name">Carlos Ruiz <small>Director de Marketing</small></span>
+                                            <blockquote>"Profesionales, rápidos y con un diseño impecable. Entendieron nuestra visión desde el primer día."</blockquote>
+                                        </li>
+                                        <li class="review-slide">
+                                            <div class="review-avatar"><i class="fas fa-user" aria-hidden="true"></i></div>
+                                            <span class="review-name">Sofía Martínez <small>E-commerce Manager</small></span>
+                                            <blockquote>"La integración de IA en nuestro sitio web ha mejorado la atención al cliente un 200%."</blockquote>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="reviews-progress" aria-hidden="true"><span id="reviewsProgress"></span></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-brand">
+                <span class="footer-star" aria-hidden="true"></span>
+                <span>MIZAR WEB</span>
+            </a>
+            <nav class="footer-links" aria-label="Enlaces legales">
+                <a href="terminos.html" data-label="Términos y Condiciones"><span>Términos y Condiciones</span></a>
+                <a href="privacidad.html" data-label="Políticas de Privacidad"><span>Políticas de Privacidad</span></a>
+                <a href="contacto.html" data-label="Contacto"><span>Contacto</span></a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="footer-legal">Todos los derechos reservados - 2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

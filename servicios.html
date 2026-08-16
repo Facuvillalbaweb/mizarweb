@@ -2,63 +2,397 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mizar Web | Servicios</title>
-    <meta name="description" content="Nuestros servicios de desarrollo, diseño y más.">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Áreas | Mizar Web</title>
+    <meta name="description" content="Nuestros servicios de desarrollo, IA y diseño, además de las habilidades y herramientas con las que trabajamos.">
+    <meta name="theme-color" content="#050a14">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="preloader"><div class="loader-container"><div class="loader-ring ring-one"></div><div class="loader-ring ring-two"></div><div class="loader-core"></div></div><div class="loader-text-container"><span class="loader-text" data-final="SERVICIOS">CARGANDO</span><div class="loader-bar"><div class="bar-fill"></div></div></div></div>
+    <div id="preloader"><div class="loader-container"><div class="loader-ring ring-one"></div><div class="loader-ring ring-two"></div><div class="loader-core"></div></div><div class="loader-text-container"><span class="loader-text" data-final="ÁREAS">CARGANDO</span><div class="loader-bar"><div class="bar-fill"></div></div></div></div>
 
     <div id="background-layer" class="bg-gradient-services"></div>
     <canvas id="starfield"></canvas>
 
+    <a href="#main-content" class="skip-link">Ir al contenido</a>
+
     <header class="main-header">
-        <div class="logo-container">
+        <a href="index.html" class="logo-container">
             <div class="star-wrapper"><div class="binary-star-icon"><div class="star s1"></div><div class="star s2"></div></div></div>
             <span class="logo-text">MIZAR WEB</span>
-        </div>
+        </a>
         <nav class="desktop-nav">
-            <a href="index.html" class="nav-btn">Inicio</a>
-            <a href="nosotros.html" class="nav-btn">Nosotros</a>
-            <a href="servicios.html" class="nav-btn active">Servicios</a>
-            <a href="proyectos.html" class="nav-btn">Proyectos</a>
-            <a href="contacto.html" class="nav-btn">Contacto</a>
+            <a href="index.html" class="nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="nav-btn active" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
-        <button class="menu-toggle" aria-label="Abrir menú"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
     </header>
 
     <div class="mobile-menu-overlay">
         <nav class="mobile-nav">
-            <a href="index.html" class="mob-nav-btn">Inicio</a>
-            <a href="nosotros.html" class="mob-nav-btn">Nosotros</a>
-            <a href="servicios.html" class="mob-nav-btn">Servicios</a>
-            <a href="proyectos.html" class="mob-nav-btn">Proyectos</a>
-            <a href="contacto.html" class="mob-nav-btn">Contacto</a>
+            <a href="index.html" class="mob-nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="mob-nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="mob-nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="mob-nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
+        <div class="mobile-social-row">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="mobile-menu-legal">
+            <a href="terminos.html">Términos y Condiciones</a>
+            <span aria-hidden="true">·</span>
+            <a href="privacidad.html">Políticas de Privacidad</a>
+        </div>
     </div>
 
     <main id="main-content">
-        <section class="section">
+        <section class="section section-areas">
             <div class="content-wrapper">
-                <h2 class="section-title">Nuestras Capacidades</h2>
-                <div class="services-grid">
-                    <div class="service-card"><div class="card-initial"><i class="fas fa-code service-icon"></i><h3>Desarrollo Web</h3><p class="card-desc">Sitios de alto impacto.</p></div><div class="card-hover-content"><h3>Web Full Stack</h3><ul><li>Landing Pages React/Angular</li><li>E-commerce Avanzado</li><li>Optimización SEO</li><li>Webs Corporativas</li></ul></div></div>
-                    <div class="service-card"><div class="card-initial"><i class="fas fa-brain service-icon"></i><h3>Herramientas IA</h3><p class="card-desc">Automatización inteligente.</p></div><div class="card-hover-content"><h3>Inteligencia Artificial</h3><ul><li>Integración API OpenAI/Gemini</li><li>Chatbots Personalizados</li><li>Automatización de Procesos</li><li>Análisis de Datos</li></ul></div></div>
-                    <div class="service-card"><div class="card-initial"><i class="fas fa-mobile-alt service-icon"></i><h3>Apps & Software</h3><p class="card-desc">Soluciones a medida.</p></div><div class="card-hover-content"><h3>Software Custom</h3><ul><li>Aplicaciones Web Progresivas (PWA)</li><li>Software de Gestión (CRM/ERP)</li><li>Desarrollo de Scripts Python</li></ul></div></div>
-                    <div class="service-card"><div class="card-initial"><i class="fab fa-microsoft service-icon"></i><h3>Microsoft Tools</h3><p class="card-desc">Gestión y Productividad.</p></div><div class="card-hover-content"><h3>Suite Microsoft</h3><ul><li>Automatización Excel (VBA)</li><li>Dashboards Power BI</li><li>Integraciones Office 365</li></ul></div></div>
-                    <div class="service-card"><div class="card-initial"><i class="fas fa-share-alt service-icon"></i><h3>Social Media</h3><p class="card-desc">Crecimiento orgánico.</p></div><div class="card-hover-content"><h3>Redes Sociales</h3><ul><li>Estrategia de Contenidos</li><li>Automatización de Posts</li><li>Gestión de Comunidad</li><li>Meta Ads</li></ul></div></div>
-                    <div class="service-card"><div class="card-initial"><i class="fas fa-pen-nib service-icon"></i><h3>Diseño Gráfico</h3><p class="card-desc">Identidad Visual.</p></div><div class="card-hover-content"><h3>Diseño & UI/UX</h3><ul><li>Branding e Identidad</li><li>Prototipado Figma</li><li>Diseño para Redes</li><li>Edición Multimedia</li></ul></div></div>
+
+                <!-- CABECERA + FORMA DE TRABAJO -->
+                <header class="areas-head">
+                    <div class="areas-head-title">
+                        <h2 class="section-title">Áreas</h2>
+                    </div>
+                    <p class="areas-method" id="areasMethod">
+                        <strong>Cómo trabajamos.</strong> Empezamos escuchando: relevamos el objetivo real del proyecto antes de escribir una línea de código. Después definimos alcance, prototipo y métricas de éxito en conjunto. Construimos por entregas cortas y verificables, con revisiones frecuentes para que veas el avance en todo momento. Cada pieza sale medida en rendimiento, accesibilidad y SEO, y se entrega documentada, con acompañamiento posterior a la puesta en producción.
+                    </p>
+                </header>
+
+                <div class="areas-body">
+
+                    <!-- 01 · SERVICIOS -->
+                    <section class="area-block" id="area-servicios" aria-labelledby="area-servicios-title">
+                        <div class="area-block-head">
+                            <span class="area-index" aria-hidden="true">01</span>
+                            <h3 class="area-title" id="area-servicios-title">Servicios</h3>
+                            <span class="area-rule" aria-hidden="true"></span>
+                            <span class="area-count">6</span>
+                        </div>
+
+                        <div class="area-grid area-grid-services">
+
+                            <article class="area-card service-card" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-code service-icon" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Desarrollo Web</h4>
+                                        <p class="card-desc">Sitios de alto impacto.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Desarrollo Web"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <h5>Web Full Stack</h5>
+                                        <ul>
+                                            <li>Landing Pages React/Angular</li>
+                                            <li>E-commerce Avanzado</li>
+                                            <li>Optimización SEO</li>
+                                            <li>Webs Corporativas</li>
+                                        </ul>
+                                        <p class="area-note">Entrega con Core Web Vitals medidos, panel de carga propio y capacitación para que administres el contenido sin depender de nosotros.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card service-card" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-brain service-icon" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Herramientas IA</h4>
+                                        <p class="card-desc">Automatización inteligente.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Herramientas IA"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <h5>Inteligencia Artificial</h5>
+                                        <ul>
+                                            <li>Integración API OpenAI/Gemini</li>
+                                            <li>Chatbots Personalizados</li>
+                                            <li>Automatización de Procesos</li>
+                                            <li>Análisis de Datos</li>
+                                        </ul>
+                                        <p class="area-note">Definimos límites de costo por consulta y trazabilidad de cada respuesta, así la herramienta escala sin sorpresas en la facturación.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card service-card" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-mobile-alt service-icon" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Apps &amp; Software</h4>
+                                        <p class="card-desc">Soluciones a medida.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Apps y Software"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <h5>Software Custom</h5>
+                                        <ul>
+                                            <li>Aplicaciones Web Progresivas (PWA)</li>
+                                            <li>Software de Gestión (CRM/ERP)</li>
+                                            <li>Desarrollo de Scripts Python</li>
+                                        </ul>
+                                        <p class="area-note">Arrancamos con un módulo funcional en pocas semanas y crecemos por iteraciones, priorizando lo que más tiempo te ahorra.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card service-card" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-microsoft service-icon" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Microsoft Tools</h4>
+                                        <p class="card-desc">Gestión y Productividad.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Microsoft Tools"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <h5>Suite Microsoft</h5>
+                                        <ul>
+                                            <li>Automatización Excel (VBA)</li>
+                                            <li>Dashboards Power BI</li>
+                                            <li>Integraciones Office 365</li>
+                                        </ul>
+                                        <p class="area-note">Conectamos las planillas que ya usás con tus sistemas, sin migraciones forzadas ni cambios bruscos de rutina para el equipo.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card service-card" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-share-alt service-icon" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Social Media</h4>
+                                        <p class="card-desc">Crecimiento orgánico.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Social Media"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <h5>Redes Sociales</h5>
+                                        <ul>
+                                            <li>Estrategia de Contenidos</li>
+                                            <li>Automatización de Posts</li>
+                                            <li>Gestión de Comunidad</li>
+                                            <li>Meta Ads</li>
+                                        </ul>
+                                        <p class="area-note">Calendario mensual acordado por adelantado y reporte de alcance, interacción y costo por resultado al cierre de cada ciclo.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card service-card" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-pen-nib service-icon" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Diseño Gráfico</h4>
+                                        <p class="card-desc">Identidad Visual.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Diseño Gráfico"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <h5>Diseño &amp; UI/UX</h5>
+                                        <ul>
+                                            <li>Branding e Identidad</li>
+                                            <li>Prototipado Figma</li>
+                                            <li>Diseño para Redes</li>
+                                            <li>Edición Multimedia</li>
+                                        </ul>
+                                        <p class="area-note">Entregamos manual de marca con tipografías, paleta y usos permitidos, más los archivos fuente editables a tu nombre.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <!-- 02 · HABILIDADES -->
+                    <section class="area-block" id="area-habilidades" aria-labelledby="area-habilidades-title">
+                        <div class="area-block-head">
+                            <span class="area-index" aria-hidden="true">02</span>
+                            <h3 class="area-title" id="area-habilidades-title">Habilidades</h3>
+                            <span class="area-rule" aria-hidden="true"></span>
+                            <span class="area-count">4</span>
+                        </div>
+
+                        <div class="area-grid area-grid-skills">
+
+                            <article class="area-card skill-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Frontend Avanzado</h4>
+                                        <p>Desarrollo de interfaces inmersivas, fluidas y con animaciones complejas.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Frontend Avanzado"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <p class="area-note">Trabajamos con renderizado por capas y animaciones aceleradas por GPU para sostener 60 fps también en equipos modestos. Cada interfaz se prueba con teclado y lector de pantalla antes de salir.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card skill-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-server" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Backend &amp; APIs</h4>
+                                        <p>Arquitecturas seguras, eficientes y gestión de bases de datos relacionales y NoSQL.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Backend y APIs"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <p class="area-note">Diseñamos el modelo de datos antes que los endpoints, versionamos la API desde el día uno y dejamos monitoreo de errores y copias automáticas configurados.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card skill-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-brain" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>Integración IA</h4>
+                                        <p>Automatización de tareas y modelos generativos aplicados a negocios reales.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Integración IA"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <p class="area-note">Antes de automatizar medimos cuánto tiempo consume la tarea manual, así el ahorro queda demostrado con números y no con promesas.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="area-card skill-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fas fa-paint-brush" aria-hidden="true"></i>
+                                    <div class="area-card-heading">
+                                        <h4>UI/UX Design</h4>
+                                        <p>Diseño centrado en la experiencia del usuario, accesibilidad y alta conversión.</p>
+                                    </div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre UI/UX Design"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer">
+                                    <div class="area-drawer-inner">
+                                        <p class="area-note">Partimos de un sistema de diseño con tokens de color, tipografía y espaciado, de modo que cualquier pantalla nueva mantiene coherencia sin rehacer trabajo.</p>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+                    </section>
+
+                    <!-- 03 · HERRAMIENTAS -->
+                    <section class="area-block" id="area-herramientas" aria-labelledby="area-herramientas-title">
+                        <div class="area-block-head">
+                            <span class="area-index" aria-hidden="true">03</span>
+                            <h3 class="area-title" id="area-herramientas-title">Herramientas</h3>
+                            <span class="area-rule" aria-hidden="true"></span>
+                            <span class="area-count">6</span>
+                        </div>
+
+                        <div class="area-grid area-grid-tools">
+
+                            <article class="area-card tool-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-react" aria-hidden="true"></i>
+                                    <div class="area-card-heading"><span>React &amp; Next.js</span></div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre React y Next.js"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Interfaces por componentes y renderizado en servidor para que la primera pantalla cargue rápido y el sitio posicione bien.</p></div></div>
+                            </article>
+
+                            <article class="area-card tool-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-node-js" aria-hidden="true"></i>
+                                    <div class="area-card-heading"><span>Node.js</span></div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Node.js"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">APIs y tareas programadas sobre un mismo lenguaje en todo el stack, lo que acorta tiempos de desarrollo y mantenimiento.</p></div></div>
+                            </article>
+
+                            <article class="area-card tool-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-python" aria-hidden="true"></i>
+                                    <div class="area-card-heading"><span>Python</span></div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Python"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Procesamiento de datos, scraping y scripts de automatización que corren solos y reportan resultados donde los necesites.</p></div></div>
+                            </article>
+
+                            <article class="area-card tool-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-figma" aria-hidden="true"></i>
+                                    <div class="area-card-heading"><span>Figma</span></div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Figma"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Prototipos navegables antes de programar: aprobás el diseño viéndolo funcionar, sin costos de retrabajo.</p></div></div>
+                            </article>
+
+                            <article class="area-card tool-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-aws" aria-hidden="true"></i>
+                                    <div class="area-card-heading"><span>Cloud Solutions</span></div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Cloud Solutions"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Despliegue en infraestructura elástica con certificados, CDN y copias automáticas incluidas desde la primera publicación.</p></div></div>
+                            </article>
+
+                            <article class="area-card tool-item" data-expandable>
+                                <div class="area-card-top">
+                                    <i class="fab fa-git-alt" aria-hidden="true"></i>
+                                    <div class="area-card-heading"><span>Git &amp; Control de Versiones</span></div>
+                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Git y control de versiones"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Todo cambio queda registrado y es reversible. El código es tuyo y podés llevártelo cuando quieras.</p></div></div>
+                            </article>
+
+                        </div>
+                    </section>
+
                 </div>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-brand">
+                <span class="footer-star" aria-hidden="true"></span>
+                <span>MIZAR WEB</span>
+            </a>
+            <nav class="footer-links" aria-label="Enlaces legales">
+                <a href="terminos.html" data-label="Términos y Condiciones"><span>Términos y Condiciones</span></a>
+                <a href="privacidad.html" data-label="Políticas de Privacidad"><span>Políticas de Privacidad</span></a>
+                <a href="contacto.html" data-label="Contacto"><span>Contacto</span></a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="footer-legal">Todos los derechos reservados - 2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

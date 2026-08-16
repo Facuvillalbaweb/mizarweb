@@ -2,13 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mizar Web | Proyectos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Proyectos | Mizar Web</title>
     <meta name="description" content="Nuestros trabajos recientes y casos de éxito.">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#050a14">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,29 +20,40 @@
     <div id="background-layer" class="bg-gradient-portfolio"></div>
     <canvas id="starfield"></canvas>
 
+    <a href="#main-content" class="skip-link">Ir al contenido</a>
+
     <header class="main-header">
-        <div class="logo-container">
+        <a href="index.html" class="logo-container">
             <div class="star-wrapper"><div class="binary-star-icon"><div class="star s1"></div><div class="star s2"></div></div></div>
             <span class="logo-text">MIZAR WEB</span>
-        </div>
+        </a>
         <nav class="desktop-nav">
-            <a href="index.html" class="nav-btn">Inicio</a>
-            <a href="nosotros.html" class="nav-btn">Nosotros</a>
-            <a href="servicios.html" class="nav-btn">Servicios</a>
-            <a href="proyectos.html" class="nav-btn active">Proyectos</a>
-            <a href="contacto.html" class="nav-btn">Contacto</a>
+            <a href="index.html" class="nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="nav-btn active" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
-        <button class="menu-toggle" aria-label="Abrir menú"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
     </header>
 
     <div class="mobile-menu-overlay">
         <nav class="mobile-nav">
-            <a href="index.html" class="mob-nav-btn">Inicio</a>
-            <a href="nosotros.html" class="mob-nav-btn">Nosotros</a>
-            <a href="servicios.html" class="mob-nav-btn">Servicios</a>
-            <a href="proyectos.html" class="mob-nav-btn">Proyectos</a>
-            <a href="contacto.html" class="mob-nav-btn">Contacto</a>
+            <a href="index.html" class="mob-nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="mob-nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="mob-nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="mob-nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
+        <div class="mobile-social-row">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="mobile-menu-legal">
+            <a href="terminos.html">Términos y Condiciones</a>
+            <span aria-hidden="true">·</span>
+            <a href="privacidad.html">Políticas de Privacidad</a>
+        </div>
     </div>
 
     <main id="main-content">
@@ -53,175 +66,209 @@
                         <h2 class="section-title">Trabajos Realizados</h2>
                         <p class="portfolio-subtitle">Selección de proyectos destacados</p>
                     </div>
-                    <div class="portfolio-filters">
-                        <button class="filter-btn active" data-filter="all">Todos</button>
-                        <button class="filter-btn" data-filter="web">Web</button>
-                        <button class="filter-btn" data-filter="linkhub">Linkhub</button>
-                        <button class="filter-btn" data-filter="design">Diseño</button>
+                    <div class="portfolio-filters" role="group" aria-label="Filtrar proyectos por categoría">
+                        <button class="filter-btn active" data-filter="all" data-label="Todos"><span>Todos</span></button>
+                        <button class="filter-btn" data-filter="institucional" data-label="Institucional"><span>Institucional</span></button>
+                        <button class="filter-btn" data-filter="ecommerce" data-label="E-commerce"><span>E-commerce</span></button>
+                        <button class="filter-btn" data-filter="landingpage" data-label="Landing Page"><span>Landing Page</span></button>
+                        <button class="filter-btn" data-filter="onepage" data-label="One Page"><span>One Page</span></button>
+                        <button class="filter-btn" data-filter="linkhub" data-label="Linkhub"><span>Linkhub</span></button>
                     </div>
                 </div>
 
-                <!-- BENTO GRID DESTACADO -->
-                <div class="bento-featured">
+                <!-- OBSERVATORIO: escenario + constelación -->
+                <div class="pj-observatory" id="pjObservatory">
 
-                    <!-- Card 1: GRANDE izquierda -->
-                    <div class="project-card bento-main" data-category="web">
-                        <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0a2540 0%, #1a4a7a 100%);">
-                            <img src="images/images-proyects/item.amatista.png" alt="Hotel Amatista" loading="lazy">
-                            <div class="card-base-info">
-                                <span class="overlay-tag">Sistema de Reservas</span>
-                                <h4>Hotel Amatista</h4>
+                    <!-- ESCENARIO -->
+                    <article class="pj-stage" id="pjStage" aria-live="polite">
+                        <div class="pj-stage-media">
+                            <div class="pj-stage-frame">
+                                <img id="pjStageImg" src="images/images-proyects/item.amatista.png" alt="Hotel Amatista">
                             </div>
-                            <div class="project-overlay">
-                                <p>Plataforma de reservas con disponibilidad en tiempo real e integración de pagos.</p>
-                                <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                            </div>
+                            <span class="pj-stage-grid" aria-hidden="true"></span>
                         </div>
-                        <div class="card-number">01</div>
+                        <div class="pj-stage-body">
+                            <div class="pj-stage-meta">
+                                <span class="overlay-tag" id="pjStageTag">Landing Page</span>
+                                <span class="pj-stage-counter"><b id="pjStageIndex">01</b><i aria-hidden="true">/</i><span id="pjStageTotal">13</span></span>
+                            </div>
+                            <h3 class="pj-stage-title" id="pjStageTitle">Hotel Amatista</h3>
+                            <p class="pj-stage-desc" id="pjStageDesc">Plataforma de reservas con disponibilidad en tiempo real e integración de pagos.</p>
+                            <span class="card-cta" id="pjStageCta">Ver proyecto <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                        </div>
+                    </article>
+
+                    <!-- CONSTELACIÓN -->
+                    <div class="pj-rail-wrap">
+                        <button class="pj-rail-arrow prev" type="button" aria-label="Proyecto anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+
+                        <div class="pj-rail-viewport" id="pjRailViewport" data-no-swipe>
+                            <span class="pj-rail-line" aria-hidden="true"></span>
+                            <ul class="pj-rail" id="pjRail" role="listbox" aria-label="Proyectos" tabindex="0">
+
+                                <li class="pj-node is-active" data-category="landingpage" role="option" aria-selected="true" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a2540 0%, #1a4a7a 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item.amatista.png" alt="Hotel Amatista" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Landing Page</span>
+                                        <h4>Hotel Amatista</h4>
+                                        <p class="pj-node-desc">Plataforma de reservas con disponibilidad en tiempo real e integración de pagos.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0d3349 0%, #0a4a6e 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item.chascomus.png" alt="Guardería Náutica" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>Guardería Náutica</h4>
+                                        <p class="pj-node-desc">Sitio con galería, agenda de eventos y formulario de inscripciones online.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="onepage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0d1f0d 0%, #1a3d1a 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-fitlife.png" alt="FitLife Gym" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">One Page</span>
+                                        <h4>FitLife Gym</h4>
+                                        <p class="pj-node-desc">One page dark mode para gimnasio con animaciones de alto impacto.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #1a1a0d 0%, #2e2e10 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-abogados.png" alt="Estudio Jurídico" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>Rodríguez &amp; Asociados</h4>
+                                        <p class="pj-node-desc">Sitio institucional para estudio jurídico con formulario de consultas integrado.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a2a40 0%, #0f4060 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-turismoarg.png" alt="Turismo Arg" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>Turismo Argentina</h4>
+                                        <p class="pj-node-desc">Portal de destinos con filtros avanzados y sistema de favoritos.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="landingpage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #2a1a00 0%, #4a3000 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-cocina.png" alt="Ebook Cocina" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Landing Page</span>
+                                        <h4>Sabores Expertos</h4>
+                                        <p class="pj-node-desc">Diseño de ebook y landing page para marca gastronómica premium.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="linkhub" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #050a14 0%, #0a1428 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-companiausa.png" alt="Tu Compañía en USA" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Linkhub</span>
+                                        <h4>Tu Compañía en USA</h4>
+                                        <p class="pj-node-desc">Plataforma de gestión para emprendedores argentinos con operaciones en EE.UU.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="ecommerce" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #001a2e 0%, #00304d 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item.chascomus.png" alt="Náutica Chascomús" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">E-commerce</span>
+                                        <h4>Náutica Chascomús</h4>
+                                        <p class="pj-node-desc">Tienda online especializada en equipamiento náutico con catálogo dinámico.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="onepage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #14050a 0%, #2e0a1a 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-blackforce.png" alt="Blackforce Training" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">One Page</span>
+                                        <h4>Blackforce Training</h4>
+                                        <p class="pj-node-desc">One page de alto contraste para box y entrenamiento funcional de combate.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a3020 0%, #0f5a38 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-calamuchita.png" alt="Turismo Calamuchita" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>Valle de Calamuchita</h4>
+                                        <p class="pj-node-desc">Portal turístico regional con mapa interactivo y guía de alojamientos.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="onepage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #1a0a2e 0%, #33104a 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-misticagym.png" alt="Mística Gym" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">One Page</span>
+                                        <h4>Mística Gym</h4>
+                                        <p class="pj-node-desc">One page con planes de entrenamiento, horarios y turnos online.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a1a30 0%, #16305a 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-psicologa.jpg" alt="Consultorio de Psicología" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>Consultorio Psicológico</h4>
+                                        <p class="pj-node-desc">Sitio profesional con reserva de turnos online y sección de recursos.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #201030 0%, #3a1a52 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-psicopedagoga.png" alt="Gabinete Psicopedagógico" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>Gabinete Psicopedagógico</h4>
+                                        <p class="pj-node-desc">Web institucional con presentación de servicios y formulario de contacto.</p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <button class="pj-rail-arrow next" type="button" aria-label="Proyecto siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
                     </div>
 
-                    <!-- Card 2: arriba derecha -->
-                    <div class="project-card bento-sm" data-category="web">
-                        <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0d3349 0%, #0a4a6e 100%);">
-                            <img src="images/images-proyects/item.chascomus.png" alt="Guardería Náutica" loading="lazy">
-                            <div class="card-base-info">
-                                <span class="overlay-tag">Web Institucional</span>
-                                <h4>Guardería Náutica</h4>
-                            </div>
-                            <div class="project-overlay">
-                                <p>Sitio con galería, agenda de eventos y formulario de inscripciones online.</p>
-                                <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="card-number">02</div>
-                    </div>
-
-                    <!-- Card 3: abajo derecha -->
-                    <div class="project-card bento-sm" data-category="web">
-                        <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0d1f0d 0%, #1a3d1a 100%);">
-                            <img src="images/images-proyects/item-blackforce.png" alt="FitLife Gym" loading="lazy">
-                            <div class="card-base-info">
-                                <span class="overlay-tag">One Page</span>
-                                <h4>FitLife Gym</h4>
-                            </div>
-                            <div class="project-overlay">
-                                <p>One page dark mode para gimnasio con animaciones de alto impacto.</p>
-                                <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                            </div>
-                        </div>
-                        <div class="card-number">03</div>
-                    </div>
-
-                </div>
-
-                <!-- DIVISOR + LABEL -->
-                <div class="carousel-divider">
-                    <div class="divider-line"></div>
-                    <div class="divider-label">
-                        <i class="fas fa-grip-lines"></i>
-                        <span>Más proyectos</span>
-                    </div>
-                    <div class="carousel-nav-btns">
-                        <button class="carousel-arrow" id="carouselPrev" aria-label="Anterior">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-arrow" id="carouselNext" aria-label="Siguiente">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- CARRUSEL HORIZONTAL -->
-                <div class="horizontal-scroll-container" id="portfolioCarousel">
-                    <div class="portfolio-track">
-
-                        <div class="project-card" data-category="web">
-                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #1a1a0d 0%, #2e2e10 100%);">
-                                <img src="images/images-proyects/item-abogados.png" alt="Estudio Jurídico" loading="lazy">
-                                <div class="card-base-info">
-                                    <span class="overlay-tag">Web Corporativa</span>
-                                    <h4>Rodríguez & Asociados</h4>
-                                </div>
-                                <div class="project-overlay">
-                                    <p>Sitio institucional para estudio jurídico con formulario de consultas integrado.</p>
-                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-category="web">
-                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #0a2a40 0%, #0f4060 100%);">
-                                <img src="images/images-proyects/item-turismoarg.png" alt="Turismo Arg" loading="lazy">
-                                <div class="card-base-info">
-                                    <span class="overlay-tag">Web Institucional</span>
-                                    <h4>Turismo Argentina</h4>
-                                </div>
-                                <div class="project-overlay">
-                                    <p>Portal de destinos con filtros avanzados y sistema de favoritos.</p>
-                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-category="design">
-                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #2a1a00 0%, #4a3000 100%);">
-                                <img src="images/images-proyects/item-cocina.png" alt="Ebook Cocina" loading="lazy">
-                                <div class="card-base-info">
-                                    <span class="overlay-tag">Diseño Editorial</span>
-                                    <h4>Sabores Expertos</h4>
-                                </div>
-                                <div class="project-overlay">
-                                    <p>Diseño de ebook y landing page para marca gastronómica premium.</p>
-                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-category="linkhub">
-                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #050a14 0%, #0a1428 100%);">
-                                <img src="images/images-proyects/item-companiausa.png" alt="Tu Compañía en USA" loading="lazy">
-                                <div class="card-base-info">
-                                    <span class="overlay-tag">Linkhub</span>
-                                    <h4>Tu Compañía en USA</h4>
-                                </div>
-                                <div class="project-overlay">
-                                    <p>Plataforma de gestión para emprendedores argentinos con operaciones en EE.UU.</p>
-                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="project-card" data-category="web">
-                            <div class="project-img-container" style="--card-fallback: linear-gradient(135deg, #001a2e 0%, #00304d 100%);">
-                                <img src="images/images-proyects/item.chascomus.png" alt="Náutica Chascomús" loading="lazy">
-                                <div class="card-base-info">
-                                    <span class="overlay-tag">E-commerce</span>
-                                    <h4>Náutica Chascomús</h4>
-                                </div>
-                                <div class="project-overlay">
-                                    <p>Tienda online especializada en equipamiento náutico con catálogo dinámico.</p>
-                                    <span class="card-cta">Ver proyecto <i class="fas fa-arrow-right"></i></span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <p class="pj-hint"><i class="fas fa-hand-pointer" aria-hidden="true"></i> Arrastrá, girá la rueda o usá las flechas para recorrer la constelación</p>
                 </div>
 
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
-    <script>
-        // Carousel arrows
-        const carousel = document.getElementById('portfolioCarousel');
-        document.getElementById('carouselNext')?.addEventListener('click', () => {
-            carousel.scrollBy({ left: 320, behavior: 'smooth' });
-        });
-        document.getElementById('carouselPrev')?.addEventListener('click', () => {
-            carousel.scrollBy({ left: -320, behavior: 'smooth' });
-        });
-    </script>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-brand">
+                <span class="footer-star" aria-hidden="true"></span>
+                <span>MIZAR WEB</span>
+            </a>
+            <nav class="footer-links" aria-label="Enlaces legales">
+                <a href="terminos.html" data-label="Términos y Condiciones"><span>Términos y Condiciones</span></a>
+                <a href="privacidad.html" data-label="Políticas de Privacidad"><span>Políticas de Privacidad</span></a>
+                <a href="contacto.html" data-label="Contacto"><span>Contacto</span></a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="footer-legal">Todos los derechos reservados - 2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

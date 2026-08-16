@@ -2,13 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mizar Web | Contacto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Contacto | Mizar Web</title>
     <meta name="description" content="Contáctanos para tu próximo proyecto digital.">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#050a14">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,84 +20,165 @@
     <div id="background-layer" class="bg-gradient-contact"></div>
     <canvas id="starfield"></canvas>
 
+    <a href="#main-content" class="skip-link">Ir al contenido</a>
+
     <header class="main-header">
-        <div class="logo-container">
+        <a href="index.html" class="logo-container">
             <div class="star-wrapper"><div class="binary-star-icon"><div class="star s1"></div><div class="star s2"></div></div></div>
             <span class="logo-text">MIZAR WEB</span>
-        </div>
+        </a>
         <nav class="desktop-nav">
-            <a href="index.html" class="nav-btn">Inicio</a>
-            <a href="nosotros.html" class="nav-btn">Nosotros</a>
-            <a href="servicios.html" class="nav-btn">Servicios</a>
-            <a href="proyectos.html" class="nav-btn">Proyectos</a>
-            <a href="contacto.html" class="nav-btn active">Contacto</a>
+            <a href="index.html" class="nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="nav-btn active" data-label="Contacto"><span>Contacto</span></a>
         </nav>
-        <button class="menu-toggle" aria-label="Abrir menú"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><span class="bar b1"></span><span class="bar b2"></span><span class="bar b3"></span></button>
     </header>
 
     <div class="mobile-menu-overlay">
         <nav class="mobile-nav">
-            <a href="index.html" class="mob-nav-btn">Inicio</a>
-            <a href="nosotros.html" class="mob-nav-btn">Nosotros</a>
-            <a href="servicios.html" class="mob-nav-btn">Servicios</a>
-            <a href="proyectos.html" class="mob-nav-btn">Proyectos</a>
-            <a href="contacto.html" class="mob-nav-btn">Contacto</a>
+            <a href="index.html" class="mob-nav-btn" data-label="Inicio"><span>Inicio</span></a>
+            <a href="servicios.html" class="mob-nav-btn" data-label="Áreas"><span>Áreas</span></a>
+            <a href="proyectos.html" class="mob-nav-btn" data-label="Proyectos"><span>Proyectos</span></a>
+            <a href="contacto.html" class="mob-nav-btn" data-label="Contacto"><span>Contacto</span></a>
         </nav>
+        <div class="mobile-social-row">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+        <div class="mobile-menu-legal">
+            <a href="terminos.html">Términos y Condiciones</a>
+            <span aria-hidden="true">·</span>
+            <a href="privacidad.html">Políticas de Privacidad</a>
+        </div>
     </div>
 
     <main id="main-content">
-        <section class="section">
-            <div class="content-wrapper split-layout">
-                <div class="contact-info-col">
-                    <h2 class="section-title">Hablemos</h2>
-                    <p>Estamos listos para hacer realidad tu proyecto. Cuéntanos qué necesitas.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="method glass-panel">
-                            <i class="fas fa-envelope"></i>
-                            <span>contacto@mizarweb.com.ar</span>
+        <section class="section section-contact">
+            <div class="content-wrapper">
+
+                <div class="split-layout">
+                    <div class="contact-info-col">
+                        <h2 class="section-title">Hablemos</h2>
+                        <p>Estamos listos para hacer realidad tu proyecto. Cuéntanos qué necesitas.</p>
+                        <p class="contact-note">La primera reunión es de diagnóstico y sin cargo: escuchamos tu idea y relevamos el alcance. Recién al terminarla definimos juntos cuántos encuentros más hacen falta y con qué frecuencia, según el tamaño del proyecto. No hay una cantidad fija de antemano.</p>
+
+                        <div class="contact-methods">
+                            <div class="method glass-panel">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span>contacto@mizarweb.com.ar</span>
+                            </div>
+
+                            <a class="method method-whatsapp" href="https://wa.me/5493751340173" target="_blank" rel="noopener">
+                                <span class="wa-badge" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+                                <span class="wa-copy">
+                                    <b>+54 3751 340173</b>
+                                    <small>Escribinos por WhatsApp · respuesta en el día</small>
+                                </span>
+                                <span class="wa-go" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+                            </a>
+
+                            <div class="method glass-panel">
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                <span>Posadas, Misiones, Arg.</span>
+                            </div>
                         </div>
-                        <div class="method glass-panel">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>+54 3751 340173</span>
+                    </div>
+
+                    <div class="contact-form-col">
+                        <form class="glass-form">
+                            <div class="form-group">
+                                <input type="text" id="cf-nombre" name="nombre" required placeholder=" ">
+                                <label for="cf-nombre">Nombre</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="cf-email" name="email" required placeholder=" ">
+                                <label for="cf-email">Email</label>
+                            </div>
+                            <div class="form-group">
+                                <select id="cf-servicio" name="servicio" aria-label="Tipo de Servicio">
+                                    <option value="" disabled selected>Tipo de Servicio</option>
+                                    <option value="web">Desarrollo Web</option>
+                                    <option value="ia">Inteligencia Artificial</option>
+                                    <option value="design">Diseño Gráfico</option>
+                                    <option value="other">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="cf-mensaje" name="mensaje" required placeholder=" "></textarea>
+                                <label for="cf-mensaje">Mensaje</label>
+                            </div>
+                            <button type="submit" class="btn-primary full-width" data-label="Enviar Mensaje"><span>Enviar Mensaje</span></button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- AGENDA DE REUNIONES -->
+                <div class="scheduler glass-panel" id="scheduler">
+                    <div class="scheduler-head">
+                        <div>
+                            <h3 class="scheduler-title">Agendá una reunión</h3>
+                            <p class="scheduler-sub">Elegí día y horario. Reuniones de 30 minutos por videollamada.</p>
                         </div>
-                        <div class="method glass-panel">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Posadas, Misiones, Arg.</span>
+                        <span class="scheduler-tz"><i class="fas fa-clock" aria-hidden="true"></i> GMT-3 · Lun a Vie</span>
+                    </div>
+
+                    <div class="scheduler-body">
+                        <div class="cal" id="cal">
+                            <div class="cal-head">
+                                <button class="cal-nav" type="button" id="calPrev" aria-label="Mes anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                                <span class="cal-month" id="calMonth" aria-live="polite">—</span>
+                                <button class="cal-nav" type="button" id="calNext" aria-label="Mes siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="cal-weekdays" aria-hidden="true">
+                                <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                            </div>
+                            <div class="cal-grid" id="calGrid" role="grid" aria-label="Días disponibles"></div>
+                            <p class="cal-legend"><span class="dot free" aria-hidden="true"></span> Disponible <span class="dot busy" aria-hidden="true"></span> Sin turnos</p>
+                        </div>
+
+                        <div class="slots" id="slots">
+                            <h4 class="slots-title">Horarios <span id="slotDate" class="slots-date">— elegí un día</span></h4>
+                            <div class="slot-list" id="slotList" role="group" aria-label="Horarios disponibles"></div>
+
+                            <div class="sched-summary" id="schedSummary" hidden>
+                                <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                                <span id="schedSummaryText"></span>
+                            </div>
+
+                            <a class="btn-primary full-width sched-confirm is-disabled" id="schedConfirm" href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-disabled="true" data-label="Confirmar reunión"><span>Confirmar reunión</span></a>
+                            <p class="sched-note">Al confirmar se abre WhatsApp con el mensaje ya redactado. No se reserva nada hasta que respondamos.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-form-col">
-                    <form class="glass-form">
-                        <div class="form-group">
-                            <input type="text" required placeholder=" ">
-                            <label>Nombre</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" required placeholder=" ">
-                            <label>Email</label>
-                        </div>
-                        <div class="form-group">
-                            <select>
-                                <option value="" disabled selected>Tipo de Servicio</option>
-                                <option value="web">Desarrollo Web</option>
-                                <option value="ia">Inteligencia Artificial</option>
-                                <option value="design">Diseño Gráfico</option>
-                                <option value="other">Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea required placeholder=" "></textarea>
-                            <label>Mensaje</label>
-                        </div>
-                        <button type="submit" class="btn-primary full-width">Enviar Mensaje</button>
-                    </form>
-                </div>
             </div>
         </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a href="index.html" class="footer-brand">
+                <span class="footer-star" aria-hidden="true"></span>
+                <span>MIZAR WEB</span>
+            </a>
+            <nav class="footer-links" aria-label="Enlaces legales">
+                <a href="terminos.html" data-label="Términos y Condiciones"><span>Términos y Condiciones</span></a>
+                <a href="privacidad.html" data-label="Políticas de Privacidad"><span>Políticas de Privacidad</span></a>
+                <a href="contacto.html" data-label="Contacto"><span>Contacto</span></a>
+            </nav>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p class="footer-legal">Todos los derechos reservados - 2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-areas">
     <div id="preloader"><div class="loader-container"><div class="loader-ring ring-one"></div><div class="loader-ring ring-two"></div><div class="loader-core"></div></div><div class="loader-text-container"><span class="loader-text" data-final="ÁREAS">CARGANDO</span><div class="loader-bar"><div class="bar-fill"></div></div></div></div>
 
     <div id="background-layer" class="bg-gradient-services"></div>
@@ -70,304 +70,407 @@
                 </header>
 
                 <div class="areas-body">
+                    <div class="areas-explorer">
 
-                    <!-- 01 · SERVICIOS -->
-                    <section class="area-block" id="area-servicios" aria-labelledby="area-servicios-title">
-                        <div class="area-block-head">
-                            <span class="area-index" aria-hidden="true">01</span>
-                            <h3 class="area-title" id="area-servicios-title">Servicios</h3>
-                            <span class="area-rule" aria-hidden="true"></span>
-                            <span class="area-count">6</span>
+                        <!-- SELECTOR DE CATEGORÍAS -->
+                        <div class="areas-selector" role="tablist" aria-label="Categorías de áreas">
+                            <button type="button" class="areas-cat-btn is-active" data-category="servicios" role="tab" aria-selected="true" aria-controls="areasCarousel">
+                                <span class="areas-cat-index" aria-hidden="true">01</span>
+                                <span class="areas-cat-info">
+                                    <span class="areas-cat-title">Servicios</span>
+                                    <span class="areas-cat-count">6</span>
+                                </span>
+                                <i class="fas fa-chevron-right areas-cat-arrow" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="areas-cat-btn" data-category="habilidades" role="tab" aria-selected="false" aria-controls="areasCarousel">
+                                <span class="areas-cat-index" aria-hidden="true">02</span>
+                                <span class="areas-cat-info">
+                                    <span class="areas-cat-title">Habilidades</span>
+                                    <span class="areas-cat-count">4</span>
+                                </span>
+                                <i class="fas fa-chevron-right areas-cat-arrow" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="areas-cat-btn" data-category="herramientas" role="tab" aria-selected="false" aria-controls="areasCarousel">
+                                <span class="areas-cat-index" aria-hidden="true">03</span>
+                                <span class="areas-cat-info">
+                                    <span class="areas-cat-title">Herramientas</span>
+                                    <span class="areas-cat-count">23</span>
+                                </span>
+                                <i class="fas fa-chevron-right areas-cat-arrow" aria-hidden="true"></i>
+                            </button>
                         </div>
 
-                        <div class="area-grid area-grid-services">
+                        <!-- CARRUSEL HORIZONTAL -->
+                        <div class="areas-carousel-wrap">
+                            <div class="areas-carousel pj-rail-viewport" id="areasCarousel" role="tabpanel" aria-live="polite" tabindex="0" data-no-swipe>
 
-                            <article class="area-card service-card" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-code service-icon" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Desarrollo Web</h4>
-                                        <p class="card-desc">Sitios de alto impacto.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Desarrollo Web"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <h5>Web Full Stack</h5>
-                                        <ul>
-                                            <li>Landing Pages React/Angular</li>
-                                            <li>E-commerce Avanzado</li>
-                                            <li>Optimización SEO</li>
-                                            <li>Webs Corporativas</li>
-                                        </ul>
-                                        <p class="area-note">Entrega con Core Web Vitals medidos, panel de carga propio y capacitación para que administres el contenido sin depender de nosotros.</p>
-                                    </div>
-                                </div>
-                            </article>
+                                <!-- 01 · SERVICIOS -->
+                                <div class="areas-carousel-track" data-panel="servicios">
 
-                            <article class="area-card service-card" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-brain service-icon" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Herramientas IA</h4>
-                                        <p class="card-desc">Automatización inteligente.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Herramientas IA"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <h5>Inteligencia Artificial</h5>
-                                        <ul>
-                                            <li>Integración API OpenAI/Gemini</li>
-                                            <li>Chatbots Personalizados</li>
-                                            <li>Automatización de Procesos</li>
-                                            <li>Análisis de Datos</li>
-                                        </ul>
-                                        <p class="area-note">Definimos límites de costo por consulta y trazabilidad de cada respuesta, así la herramienta escala sin sorpresas en la facturación.</p>
-                                    </div>
-                                </div>
-                            </article>
+                                    <article class="area-card service-card">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-code service-icon" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Desarrollo Web</h4>
+                                                <p class="card-desc">Sitios de alto impacto.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <h5>Web Full Stack</h5>
+                                                <ul>
+                                                    <li>Landing Pages React/Angular</li>
+                                                    <li>E-commerce Avanzado</li>
+                                                    <li>Optimización SEO</li>
+                                                    <li>Webs Corporativas</li>
+                                                </ul>
+                                                <p class="area-note">Entrega con Core Web Vitals medidos, panel de carga propio y capacitación para que administres el contenido sin depender de nosotros.</p>
+                                            </div>
+                                        </div>
+                                    </article>
 
-                            <article class="area-card service-card" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-mobile-alt service-icon" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Apps &amp; Software</h4>
-                                        <p class="card-desc">Soluciones a medida.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Apps y Software"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <h5>Software Custom</h5>
-                                        <ul>
-                                            <li>Aplicaciones Web Progresivas (PWA)</li>
-                                            <li>Software de Gestión (CRM/ERP)</li>
-                                            <li>Desarrollo de Scripts Python</li>
-                                        </ul>
-                                        <p class="area-note">Arrancamos con un módulo funcional en pocas semanas y crecemos por iteraciones, priorizando lo que más tiempo te ahorra.</p>
-                                    </div>
-                                </div>
-                            </article>
+                                    <article class="area-card service-card">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-brain service-icon" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Herramientas IA</h4>
+                                                <p class="card-desc">Automatización inteligente.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <h5>Inteligencia Artificial</h5>
+                                                <ul>
+                                                    <li>Integración API OpenAI/Gemini</li>
+                                                    <li>Chatbots Personalizados</li>
+                                                    <li>Automatización de Procesos</li>
+                                                    <li>Análisis de Datos</li>
+                                                </ul>
+                                                <p class="area-note">Definimos límites de costo por consulta y trazabilidad de cada respuesta, así la herramienta escala sin sorpresas en la facturación.</p>
+                                            </div>
+                                        </div>
+                                    </article>
 
-                            <article class="area-card service-card" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-microsoft service-icon" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Microsoft Tools</h4>
-                                        <p class="card-desc">Gestión y Productividad.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Microsoft Tools"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <h5>Suite Microsoft</h5>
-                                        <ul>
-                                            <li>Automatización Excel (VBA)</li>
-                                            <li>Dashboards Power BI</li>
-                                            <li>Integraciones Office 365</li>
-                                        </ul>
-                                        <p class="area-note">Conectamos las planillas que ya usás con tus sistemas, sin migraciones forzadas ni cambios bruscos de rutina para el equipo.</p>
-                                    </div>
-                                </div>
-                            </article>
+                                    <article class="area-card service-card">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-mobile-alt service-icon" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Apps &amp; Software</h4>
+                                                <p class="card-desc">Soluciones a medida.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <h5>Software Custom</h5>
+                                                <ul>
+                                                    <li>Aplicaciones Web Progresivas (PWA)</li>
+                                                    <li>Software de Gestión (CRM/ERP)</li>
+                                                    <li>Desarrollo de Scripts Python</li>
+                                                </ul>
+                                                <p class="area-note">Arrancamos con un módulo funcional en pocas semanas y crecemos por iteraciones, priorizando lo que más tiempo te ahorra.</p>
+                                            </div>
+                                        </div>
+                                    </article>
 
-                            <article class="area-card service-card" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-share-alt service-icon" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Social Media</h4>
-                                        <p class="card-desc">Crecimiento orgánico.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Social Media"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <h5>Redes Sociales</h5>
-                                        <ul>
-                                            <li>Estrategia de Contenidos</li>
-                                            <li>Automatización de Posts</li>
-                                            <li>Gestión de Comunidad</li>
-                                            <li>Meta Ads</li>
-                                        </ul>
-                                        <p class="area-note">Calendario mensual acordado por adelantado y reporte de alcance, interacción y costo por resultado al cierre de cada ciclo.</p>
-                                    </div>
-                                </div>
-                            </article>
+                                    <article class="area-card service-card">
+                                        <div class="area-card-top">
+                                            <i class="fab fa-microsoft service-icon" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Microsoft Tools</h4>
+                                                <p class="card-desc">Gestión y Productividad.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <h5>Suite Microsoft</h5>
+                                                <ul>
+                                                    <li>Automatización Excel (VBA)</li>
+                                                    <li>Dashboards Power BI</li>
+                                                    <li>Integraciones Office 365</li>
+                                                </ul>
+                                                <p class="area-note">Conectamos las planillas que ya usás con tus sistemas, sin migraciones forzadas ni cambios bruscos de rutina para el equipo.</p>
+                                            </div>
+                                        </div>
+                                    </article>
 
-                            <article class="area-card service-card" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-pen-nib service-icon" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Diseño Gráfico</h4>
-                                        <p class="card-desc">Identidad Visual.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Diseño Gráfico"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <h5>Diseño &amp; UI/UX</h5>
-                                        <ul>
-                                            <li>Branding e Identidad</li>
-                                            <li>Prototipado Figma</li>
-                                            <li>Diseño para Redes</li>
-                                            <li>Edición Multimedia</li>
-                                        </ul>
-                                        <p class="area-note">Entregamos manual de marca con tipografías, paleta y usos permitidos, más los archivos fuente editables a tu nombre.</p>
-                                    </div>
-                                </div>
-                            </article>
+                                    <article class="area-card service-card">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-share-alt service-icon" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Social Media</h4>
+                                                <p class="card-desc">Crecimiento orgánico.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <h5>Redes Sociales</h5>
+                                                <ul>
+                                                    <li>Estrategia de Contenidos</li>
+                                                    <li>Automatización de Posts</li>
+                                                    <li>Gestión de Comunidad</li>
+                                                    <li>Meta Ads</li>
+                                                </ul>
+                                                <p class="area-note">Calendario mensual acordado por adelantado y reporte de alcance, interacción y costo por resultado al cierre de cada ciclo.</p>
+                                            </div>
+                                        </div>
+                                    </article>
 
+                                    <article class="area-card service-card">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-pen-nib service-icon" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Diseño Gráfico</h4>
+                                                <p class="card-desc">Identidad Visual.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <h5>Diseño &amp; UI/UX</h5>
+                                                <ul>
+                                                    <li>Branding e Identidad</li>
+                                                    <li>Prototipado Figma</li>
+                                                    <li>Diseño para Redes</li>
+                                                    <li>Edición Multimedia</li>
+                                                </ul>
+                                                <p class="area-note">Entregamos manual de marca con tipografías, paleta y usos permitidos, más los archivos fuente editables a tu nombre.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                </div>
+
+                                <!-- 02 · HABILIDADES -->
+                                <div class="areas-carousel-track" data-panel="habilidades" hidden>
+
+                                    <article class="area-card skill-item">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Frontend Avanzado</h4>
+                                                <p>Desarrollo de interfaces inmersivas, fluidas y con animaciones complejas.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <p class="area-note">Trabajamos con renderizado por capas y animaciones aceleradas por GPU para sostener 60 fps también en equipos modestos. Cada interfaz se prueba con teclado y lector de pantalla antes de salir.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <article class="area-card skill-item">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-server" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Backend &amp; APIs</h4>
+                                                <p>Arquitecturas seguras, eficientes y gestión de bases de datos relacionales y NoSQL.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <p class="area-note">Diseñamos el modelo de datos antes que los endpoints, versionamos la API desde el día uno y dejamos monitoreo de errores y copias automáticas configurados.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <article class="area-card skill-item">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-brain" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>Integración IA</h4>
+                                                <p>Automatización de tareas y modelos generativos aplicados a negocios reales.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <p class="area-note">Antes de automatizar medimos cuánto tiempo consume la tarea manual, así el ahorro queda demostrado con números y no con promesas.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <article class="area-card skill-item">
+                                        <div class="area-card-top">
+                                            <i class="fas fa-paint-brush" aria-hidden="true"></i>
+                                            <div class="area-card-heading">
+                                                <h4>UI/UX Design</h4>
+                                                <p>Diseño centrado en la experiencia del usuario, accesibilidad y alta conversión.</p>
+                                            </div>
+                                        </div>
+                                        <div class="area-drawer">
+                                            <div class="area-drawer-inner">
+                                                <p class="area-note">Partimos de un sistema de diseño con tokens de color, tipografía y espaciado, de modo que cualquier pantalla nueva mantiene coherencia sin rehacer trabajo.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                </div>
+
+                                <!-- 03 · HERRAMIENTAS -->
+                                <div class="areas-carousel-track" data-panel="herramientas" hidden>
+
+                                    <div class="tools-page">
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-react" aria-hidden="true"></i>
+                                                <span>React &amp; Next.js</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-node-js" aria-hidden="true"></i>
+                                                <span>Node.js</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-python" aria-hidden="true"></i>
+                                                <span>Python</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-figma" aria-hidden="true"></i>
+                                                <span>Figma</span>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                    <div class="tools-page">
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-aws" aria-hidden="true"></i>
+                                                <span>Cloud Solutions</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-git-alt" aria-hidden="true"></i>
+                                                <span>Git &amp; Versiones</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-wordpress" aria-hidden="true"></i>
+                                                <span>WordPress</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-github" aria-hidden="true"></i>
+                                                <span>GitHub</span>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                    <div class="tools-page">
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-html5" aria-hidden="true"></i>
+                                                <span>HTML5</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-css3-alt" aria-hidden="true"></i>
+                                                <span>CSS3</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-js" aria-hidden="true"></i>
+                                                <span>JavaScript</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-code" aria-hidden="true"></i>
+                                                <span>C++</span>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                    <div class="tools-page">
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-robot" aria-hidden="true"></i>
+                                                <span>Claude</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-file-excel" aria-hidden="true"></i>
+                                                <span>Excel</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-file-word" aria-hidden="true"></i>
+                                                <span>Word</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-palette" aria-hidden="true"></i>
+                                                <span>Canva</span>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                    <div class="tools-page">
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-php" aria-hidden="true"></i>
+                                                <span>PHP</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-database" aria-hidden="true"></i>
+                                                <span>SQL</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-note-sticky" aria-hidden="true"></i>
+                                                <span>Notion</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-google" aria-hidden="true"></i>
+                                                <span>Google Workspace</span>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                    <div class="tools-page">
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-briefcase" aria-hidden="true"></i>
+                                                <span>Zoho</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fas fa-cloud" aria-hidden="true"></i>
+                                                <span>Cloudflare</span>
+                                            </div>
+                                        </article>
+                                        <article class="area-card tool-item">
+                                            <div class="tool-item-body">
+                                                <i class="fab fa-elementor" aria-hidden="true"></i>
+                                                <span>Elementor</span>
+                                            </div>
+                                        </article>
+                                    </div>
+
+                                </div>
+
+                            </div>
                         </div>
-                    </section>
 
-                    <!-- 02 · HABILIDADES -->
-                    <section class="area-block" id="area-habilidades" aria-labelledby="area-habilidades-title">
-                        <div class="area-block-head">
-                            <span class="area-index" aria-hidden="true">02</span>
-                            <h3 class="area-title" id="area-habilidades-title">Habilidades</h3>
-                            <span class="area-rule" aria-hidden="true"></span>
-                            <span class="area-count">4</span>
-                        </div>
-
-                        <div class="area-grid area-grid-skills">
-
-                            <article class="area-card skill-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-laptop-code" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Frontend Avanzado</h4>
-                                        <p>Desarrollo de interfaces inmersivas, fluidas y con animaciones complejas.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Frontend Avanzado"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <p class="area-note">Trabajamos con renderizado por capas y animaciones aceleradas por GPU para sostener 60 fps también en equipos modestos. Cada interfaz se prueba con teclado y lector de pantalla antes de salir.</p>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="area-card skill-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-server" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Backend &amp; APIs</h4>
-                                        <p>Arquitecturas seguras, eficientes y gestión de bases de datos relacionales y NoSQL.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Backend y APIs"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <p class="area-note">Diseñamos el modelo de datos antes que los endpoints, versionamos la API desde el día uno y dejamos monitoreo de errores y copias automáticas configurados.</p>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="area-card skill-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-brain" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>Integración IA</h4>
-                                        <p>Automatización de tareas y modelos generativos aplicados a negocios reales.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Integración IA"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <p class="area-note">Antes de automatizar medimos cuánto tiempo consume la tarea manual, así el ahorro queda demostrado con números y no con promesas.</p>
-                                    </div>
-                                </div>
-                            </article>
-
-                            <article class="area-card skill-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fas fa-paint-brush" aria-hidden="true"></i>
-                                    <div class="area-card-heading">
-                                        <h4>UI/UX Design</h4>
-                                        <p>Diseño centrado en la experiencia del usuario, accesibilidad y alta conversión.</p>
-                                    </div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre UI/UX Design"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer">
-                                    <div class="area-drawer-inner">
-                                        <p class="area-note">Partimos de un sistema de diseño con tokens de color, tipografía y espaciado, de modo que cualquier pantalla nueva mantiene coherencia sin rehacer trabajo.</p>
-                                    </div>
-                                </div>
-                            </article>
-
-                        </div>
-                    </section>
-
-                    <!-- 03 · HERRAMIENTAS -->
-                    <section class="area-block" id="area-herramientas" aria-labelledby="area-herramientas-title">
-                        <div class="area-block-head">
-                            <span class="area-index" aria-hidden="true">03</span>
-                            <h3 class="area-title" id="area-herramientas-title">Herramientas</h3>
-                            <span class="area-rule" aria-hidden="true"></span>
-                            <span class="area-count">6</span>
-                        </div>
-
-                        <div class="area-grid area-grid-tools">
-
-                            <article class="area-card tool-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-react" aria-hidden="true"></i>
-                                    <div class="area-card-heading"><span>React &amp; Next.js</span></div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre React y Next.js"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Interfaces por componentes y renderizado en servidor para que la primera pantalla cargue rápido y el sitio posicione bien.</p></div></div>
-                            </article>
-
-                            <article class="area-card tool-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-node-js" aria-hidden="true"></i>
-                                    <div class="area-card-heading"><span>Node.js</span></div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Node.js"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">APIs y tareas programadas sobre un mismo lenguaje en todo el stack, lo que acorta tiempos de desarrollo y mantenimiento.</p></div></div>
-                            </article>
-
-                            <article class="area-card tool-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-python" aria-hidden="true"></i>
-                                    <div class="area-card-heading"><span>Python</span></div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Python"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Procesamiento de datos, scraping y scripts de automatización que corren solos y reportan resultados donde los necesites.</p></div></div>
-                            </article>
-
-                            <article class="area-card tool-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-figma" aria-hidden="true"></i>
-                                    <div class="area-card-heading"><span>Figma</span></div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Figma"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Prototipos navegables antes de programar: aprobás el diseño viéndolo funcionar, sin costos de retrabajo.</p></div></div>
-                            </article>
-
-                            <article class="area-card tool-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-aws" aria-hidden="true"></i>
-                                    <div class="area-card-heading"><span>Cloud Solutions</span></div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Cloud Solutions"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Despliegue en infraestructura elástica con certificados, CDN y copias automáticas incluidas desde la primera publicación.</p></div></div>
-                            </article>
-
-                            <article class="area-card tool-item" data-expandable>
-                                <div class="area-card-top">
-                                    <i class="fab fa-git-alt" aria-hidden="true"></i>
-                                    <div class="area-card-heading"><span>Git &amp; Control de Versiones</span></div>
-                                    <button class="area-toggle" type="button" aria-expanded="false" aria-label="Ver más sobre Git y control de versiones"><span class="area-toggle-glyph" aria-hidden="true"></span></button>
-                                </div>
-                                <div class="area-drawer"><div class="area-drawer-inner"><p class="area-note">Todo cambio queda registrado y es reversible. El código es tuyo y podés llevártelo cuando quieras.</p></div></div>
-                            </article>
-
-                        </div>
-                    </section>
-
+                    </div>
                 </div>
+
             </div>
         </section>
     </main>

@@ -560,7 +560,7 @@ ul  { list-style: none; }
     text-align: start;
 }
 
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: start; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: start; margin-bottom: 1rem;}
 
 .fade-in {
     animation: fadeUp 0.9s ease 0.3s both;
@@ -755,6 +755,62 @@ ul  { list-style: none; }
 
 .about-description strong { color: var(--accent-cyan); }
 
+/* Pilares de "Somos Mizar": reemplaza el bloque de texto largo que se
+   movió al hero. Tres chips con ícono pulsante, coherentes con el
+   destello del logo binario del header. */
+.about-pillars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(0.7rem, 1.6vw, 1.2rem);
+}
+
+.pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 1.1rem;
+    background: rgba(17, 34, 64, 0.6);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    transition: border-color 0.4s ease, transform 0.4s var(--e-expo);
+}
+
+.pillar-item:hover { border-color: rgba(100, 255, 218, 0.4); transform: translateY(-2px); }
+
+.pillar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(100, 255, 218, 0.08);
+    color: var(--accent-cyan);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    animation: mzPillarPulse 2.6s ease-in-out infinite;
+}
+
+.pillar-item:nth-child(2) .pillar-icon { animation-delay: 0.4s; }
+.pillar-item:nth-child(3) .pillar-icon { animation-delay: 0.8s; }
+
+.pillar-label {
+    font-family: var(--font-title);
+    font-size: 0.78rem;
+    letter-spacing: 0.8px;
+    color: var(--text-main);
+    white-space: nowrap;
+}
+
+@keyframes mzPillarPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.35); }
+    50%      { box-shadow: 0 0 0 7px rgba(100, 255, 218, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pillar-icon { animation: none; }
+}
+
 .founders-container {
     display: grid;
     grid-template-rows: auto;
@@ -871,6 +927,56 @@ ul  { list-style: none; }
     position: relative;
     margin-bottom: 1.4rem;
 }
+
+/* Trampa anti-spam: fuera de la vista pero sin display:none ni
+   visibility:hidden, porque muchos bots saltean los campos ocultos
+   de esa forma y sí completan los que "existen" en el layout. */
+.hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Aviso de estado del envío (enviando / éxito / error) */
+.form-status {
+    margin: 1rem 0 0;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    background: rgba(17, 34, 64, 0.6);
+    color: var(--text-muted);
+    animation: fadeUp 0.45s var(--e-expo) both;
+}
+
+.form-status.is-info {
+    border-color: rgba(100, 255, 218, 0.28);
+    color: var(--text-main);
+}
+
+.form-status.is-ok {
+    border-color: rgba(100, 255, 218, 0.5);
+    background: rgba(100, 255, 218, 0.08);
+    color: var(--accent-cyan);
+}
+
+.form-status.is-error {
+    border-color: rgba(255, 122, 122, 0.45);
+    background: rgba(255, 122, 122, 0.08);
+    color: #ffb3b3;
+}
+
+/* Botón mientras se está enviando */
+.btn-primary.is-sending {
+    opacity: 0.72;
+    cursor: progress;
+}
+
+.btn-primary:disabled { pointer-events: none; }
 
 .form-group input,
 .form-group textarea,
@@ -2121,7 +2227,9 @@ body.menu-open { overflow: hidden; }
     height: 160%;
     background: radial-gradient(60% 50% at 50% 0%, rgba(100, 255, 218, 0.10), transparent 70%);
     opacity: 0.7;
-    z-index: -1;
+    /* Sin z-index negativo (ver nota igual en .area-card::before):
+       isolation + z-index:-1 podía provocar un parpadeo/desaparición
+       del panel al recomponerse la capa en el hover. */
     pointer-events: none;
 }
 
@@ -2314,6 +2422,9 @@ body.menu-open { overflow: hidden; }
    aspecto de vidrio por una fracción de la memoria. */
 .area-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background: rgba(17, 34, 64, 0.86);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-soft);
@@ -2325,29 +2436,33 @@ body.menu-open { overflow: hidden; }
                 background 0.45s ease;
 }
 
+/* Reflejo que sigue al cursor (único efecto hover: ya no hay
+   despliegue de contenido, así el carrusel nunca cambia de tamaño) */
 .area-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(180px 120px at var(--mx, 50%) var(--my, 0%),
-        rgba(100, 255, 218, 0.13), transparent 70%);
+    background: radial-gradient(220px 160px at var(--mx, 50%) var(--my, 0%),
+        rgba(100, 255, 218, 0.16), transparent 70%);
     opacity: 0;
     transition: opacity 0.45s ease;
-    z-index: -1;
+    /* Sin z-index negativo: dentro de un contexto aislado (isolation:
+       isolate en .area-card) puede provocar que Chrome recomponga mal
+       la capa en el hover y el contenido parpadee/desaparezca un frame.
+       Al ser ::before ya pinta primero en el orden normal, detrás del
+       resto del contenido, sin necesitarlo. */
     pointer-events: none;
 }
 
-.area-card:hover,
-.area-card.is-open {
+.area-card:hover {
     border-color: rgba(100, 255, 218, 0.42);
     transform: translateY(-4px);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
 }
 
-.area-card:hover::before,
-.area-card.is-open::before { opacity: 1; }
+.area-card:hover::before { opacity: 1; }
 
-/* Filo superior que se enciende al abrir */
+/* Filo superior luminoso */
 .area-card::after {
     content: '';
     position: absolute;
@@ -2361,14 +2476,16 @@ body.menu-open { overflow: hidden; }
     transition: transform 0.6s var(--e-expo);
 }
 
-.area-card.is-open::after,
 .area-card:hover::after { transform: scaleX(1); }
 
 .area-card-top {
     display: flex;
     align-items: flex-start;
+    flex-shrink: 0;
     gap: clamp(0.7rem, 1.4vw, 1.1rem);
     padding: clamp(1rem, 2vw, 1.4rem);
+    flex-direction: column;
+    align-items: center;
 }
 
 .area-card-top > i {
@@ -2392,6 +2509,7 @@ body.menu-open { overflow: hidden; }
     letter-spacing: 1.3px;
     margin-bottom: 0.3rem;
     line-height: 1.4;
+    text-align: center;
 }
 
 .area-card-heading p,
@@ -2400,6 +2518,7 @@ body.menu-open { overflow: hidden; }
     font-size: 0.8rem;
     line-height: 1.6;
     display: block;
+    text-align: center;
 }
 
 .area-grid-tools .area-card-heading span {
@@ -2409,63 +2528,29 @@ body.menu-open { overflow: hidden; }
     color: var(--text-main);
 }
 
-.area-toggle {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid var(--glass-border);
-    background: transparent;
-    cursor: pointer;
-    position: relative;
-    transition: border-color 0.4s ease, background 0.4s ease, transform 0.5s var(--e-back);
-}
-
-.area-toggle:hover { border-color: var(--accent-cyan); background: rgba(100, 255, 218, 0.08); }
-
-.area-toggle-glyph,
-.area-toggle-glyph::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 11px;
-    height: 1.5px;
-    background: var(--accent-cyan);
-    border-radius: 2px;
-    transform: translate(-50%, -50%);
-    transition: transform 0.45s var(--e-back), opacity 0.3s ease;
-}
-
-.area-toggle-glyph::before { transform: translate(-50%, -50%) rotate(90deg); }
-
-.area-card.is-open .area-toggle { transform: rotate(180deg); }
-.area-card.is-open .area-toggle-glyph::before { transform: translate(-50%, -50%) rotate(0deg); opacity: 0; }
-
+/* Contenido antes desplegable, ahora siempre visible: cada tarjeta
+   ocupa el resto de la altura de la caja y empuja la nota al final
+   con margin-top:auto, así todas quedan prolijas aunque tengan
+   menos contenido que la más grande. overflow-y:auto es sólo una
+   red de seguridad si el texto no entra en el alto disponible. */
 .area-drawer {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.55s var(--e-expo);
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
 }
-
-.area-card.is-open .area-drawer { grid-template-rows: 1fr; }
 
 .area-drawer-inner {
-    overflow: hidden;
-    padding: 0 clamp(1rem, 2vw, 1.4rem);
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 clamp(1rem, 2vw, 1.4rem) clamp(1rem, 2vw, 1.4rem);
+    overflow-y: auto;
 }
-
-.area-card.is-open .area-drawer-inner { padding-bottom: clamp(1rem, 2vw, 1.4rem); }
-
-.area-drawer-inner > * {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.4s ease 0.1s, transform 0.5s var(--e-expo) 0.1s;
-}
-
-.area-card.is-open .area-drawer-inner > * { opacity: 1; transform: none; }
 
 .area-drawer-inner h5 {
+    flex-shrink: 0;
     font-family: var(--font-title);
     font-size: 0.72rem;
     letter-spacing: 1.5px;
@@ -2476,6 +2561,7 @@ body.menu-open { overflow: hidden; }
 }
 
 .area-drawer-inner ul {
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     gap: 0.3rem;
@@ -2497,6 +2583,8 @@ body.menu-open { overflow: hidden; }
 }
 
 .area-note {
+    flex-shrink: 0;
+    margin-top: auto;
     font-size: 0.78rem;
     line-height: 1.7;
     color: var(--text-muted);
@@ -2506,6 +2594,212 @@ body.menu-open { overflow: hidden; }
 }
 
 .area-grid-tools .area-note { border-top: none; padding-top: 0; }
+
+/* ------------------------------------------------------------
+   15.3b ÁREAS — EXPLORADOR EN CARRUSEL
+   Selector de categorías a la izquierda; a la derecha, un único
+   carrusel horizontal que muestra las tarjetas de la categoría
+   activa. Reutiliza el arrastre y la máscara de bordes de
+   .pj-rail-viewport (riel de proyectos) para el scroll con mouse,
+   rueda y dedo.
+   ------------------------------------------------------------ */
+.areas-explorer {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.32fr) minmax(0, 1fr);
+    gap: var(--gap-block);
+    align-items: stretch;
+}
+
+.areas-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.areas-cat-btn {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.7rem, 1.4vw, 1.1rem);
+    width: 100%;
+    padding: clamp(0.9rem, 1.8vw, 1.3rem);
+    background: rgba(17, 34, 64, 0.86);
+    border: 1px solid var(--glass-border);
+    border-left: 3px solid transparent;
+    border-radius: var(--radius-soft);
+    color: var(--text-main);
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s var(--e-expo);
+}
+
+.areas-cat-btn:hover { border-color: rgba(100, 255, 218, 0.35); transform: translateX(3px); }
+
+.areas-cat-btn.is-active {
+    border-left-color: var(--accent-cyan);
+    background: rgba(100, 255, 218, 0.07);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.areas-cat-index {
+    font-family: var(--font-title);
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    color: var(--accent-cyan);
+    opacity: 0.75;
+    flex-shrink: 0;
+}
+
+.areas-cat-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+
+.areas-cat-title {
+    font-family: var(--font-title);
+    font-size: clamp(0.85rem, 0.6vw + 0.65rem, 1rem);
+    letter-spacing: 1px;
+}
+
+.areas-cat-count { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.5px; }
+
+.areas-cat-arrow {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    transition: transform 0.4s var(--e-back), color 0.35s ease;
+}
+
+.areas-cat-btn.is-active .areas-cat-arrow { color: var(--accent-cyan); transform: translateX(3px); }
+
+/* Alto fijo (clamp por vh): el carrusel mide siempre lo mismo sin
+   importar la categoría activa, así cambiar de pestaña nunca mueve
+   el resto de la página. En escritorio, el bloqueo de pantalla
+   completa de la sección (más abajo) estira esta caja al resto del
+   espacio disponible; este clamp es el piso para el resto de casos. */
+.areas-carousel-wrap {
+    min-width: 0;
+    height: clamp(360px, 48vh, 520px);
+    display: flex;
+    flex-direction: column;
+    background: rgba(17, 34, 64, 0.5);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: clamp(0.9rem, 1.8vw, 1.4rem);
+}
+
+.areas-carousel-wrap .areas-carousel {
+    flex: 1;
+    min-height: 0;
+    padding: 4px 4px 12px;
+}
+
+.areas-carousel-track {
+    display: flex;
+    align-items: stretch;
+    height: 100%;
+    gap: var(--gap-item);
+    width: max-content;
+    animation: fadeUp 0.5s ease both;
+}
+
+.areas-carousel-track[hidden] { display: none; }
+
+.areas-carousel-track[data-panel="servicios"]    > .area-card { flex: 0 0 clamp(240px, 26vw, 300px); }
+.areas-carousel-track[data-panel="habilidades"]  > .area-card { flex: 0 0 clamp(220px, 24vw, 270px); }
+
+/* Herramientas: sin descripción, sólo logo + nombre, agrupadas de a
+   4 por "página" (2 columnas × 2 filas) que se suceden en el
+   carrusel horizontal. */
+.tools-page {
+    flex: 0 0 clamp(260px, 30vw, 380px);
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: var(--gap-item);
+}
+
+.tool-item-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    height: 100%;
+    padding: clamp(0.8rem, 1.6vw, 1.2rem);
+    text-align: center;
+}
+
+.tool-item-body i {
+    font-size: clamp(1.6rem, 1.4vw + 1.1rem, 2.3rem);
+    color: var(--accent-cyan);
+    transition: transform 0.5s var(--e-back), text-shadow 0.4s ease;
+}
+
+.area-card:hover .tool-item-body i {
+    transform: translateY(-2px) scale(1.1);
+    text-shadow: 0 0 18px rgba(100, 255, 218, 0.5);
+}
+
+.tool-item-body span {
+    font-family: var(--font-title);
+    font-size: 0.74rem;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    color: var(--text-main);
+}
+
+.areas-selector { min-height: 0; }
+.areas-cat-btn { flex: 1; }
+
+@media (max-width: 1024px) {
+    .areas-explorer { grid-template-columns: 1fr; }
+    .areas-selector { flex-direction: row; flex-wrap: wrap; }
+    .areas-cat-btn { flex: 1 1 220px; }
+    .areas-carousel-wrap { height: clamp(300px, 42vh, 460px); }
+}
+
+@media (max-width: 560px) {
+    .areas-selector { flex-direction: row; }
+    .areas-carousel-wrap { height: clamp(280px, 46vh, 400px); }
+}
+
+/* ------------------------------------------------------------
+   ÁREAS EN MOBILE: lista apilada en vez de carrusel horizontal.
+   Por debajo del corte de navegación móvil (768px) el riel deja
+   de tener sentido: son tarjetas angostas de ancho fijo pensadas
+   para arrastrar con mouse/rueda, y en un dedo compiten con el
+   swipe de cambio de página. Se convierten en una lista vertical
+   de ancho completo con scroll normal de la página: se lee de
+   corrido, sin arrastrar nada hacia los costados. */
+@media (max-width: 768px) {
+    .areas-carousel-wrap { height: auto; }
+
+    #areasCarousel {
+        overflow-x: visible;
+        overflow-y: visible;
+        mask-image: none;
+        -webkit-mask-image: none;
+        cursor: default;
+        padding: 2px;
+    }
+
+    .areas-carousel-track {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+
+    .areas-carousel-track[data-panel="servicios"] > .area-card,
+    .areas-carousel-track[data-panel="habilidades"] > .area-card {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+
+    .tools-page {
+        flex: 1 1 auto;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 /* ------------------------------------------------------------
    15.4 PROYECTOS — CONSTELACIÓN + ESCENARIO
@@ -2919,6 +3213,14 @@ body.menu-open { overflow: hidden; }
 }
 
 .method-whatsapp:hover .wa-go { transform: translateX(5px); }
+
+.form-security-note, .form-footer-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
 
 /* --- Agenda --- */
 .scheduler {
@@ -3407,7 +3709,12 @@ body.menu-open { overflow: hidden; }
         width: 100%;
     }
 
-    .founders-container { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    /* Antes se armaban 2 columnas con auto-fit entre ~681-1024px: con
+       sólo dos tarjetas horizontales (foto + texto) el ancho de cada
+       columna quedaba demasiado angosto y el título/rol se envolvían
+       de forma desprolija. Mismo criterio que el resto del sitio
+       (una sola columna, como en escritorio y en mobile). */
+    .founders-container { grid-template-columns: 1fr; }
 
     .pj-stage { grid-template-columns: 1fr; }
     .pj-stage-media { aspect-ratio: 16 / 8; }
@@ -3491,6 +3798,8 @@ body.menu-open { overflow: hidden; }
     /* Descripciones cortas y subtítulos fuera */
     .area-grid-services .card-desc,
     .area-grid-skills .area-card-heading p,
+    .areas-carousel-track[data-panel="servicios"] .card-desc,
+    .areas-carousel-track[data-panel="habilidades"] .area-card-heading p,
     .founder-info p,
     .scheduler-sub,
     .sched-note,
@@ -3578,7 +3887,6 @@ body.menu-open { overflow: hidden; }
 }
 
 /* Contención de la onda de clic en los controles nuevos */
-.area-toggle,
 .pj-rail-arrow,
 .cal-nav {
     overflow: hidden;
@@ -3737,6 +4045,69 @@ body.menu-open { overflow: hidden; }
 /* En el resto de tamaños el inicio se desplaza con normalidad */
 @media (max-width: 1024px), (max-height: 619px) {
     body.page-home { overflow-y: auto; }
+}
+
+/* ============================================================
+   19. ÁREAS A PANTALLA COMPLETA (escritorio)
+   Mismo criterio que el inicio (sección 18): cabecera, selector,
+   carrusel y pie entran de una sola vez, sin scroll de página. El
+   carrusel ocupa el resto del alto disponible, así mide siempre
+   lo mismo sin importar la categoría activa.
+   ============================================================ */
+@media (min-width: 1025px) and (min-height: 620px) {
+
+    body.page-areas {
+        height: 100dvh;
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+    }
+
+    body.page-areas #main-content { min-height: 0; display: grid; }
+
+    body.page-areas .section-areas {
+        min-height: 0;
+        height: 100%;
+        padding: calc(var(--header-height) + clamp(20px, 4vh, 48px)) 0 clamp(10px, 2vh, 20px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    body.page-areas .content-wrapper {
+        min-height: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    body.page-areas .areas-head {
+        flex-shrink: 0;
+        margin-bottom: clamp(0.8rem, 2.6vh, 1.6rem);
+    }
+
+    body.page-areas .areas-method {
+        font-size: clamp(0.74rem, 0.3vw + 0.5vh + 0.3rem, 0.92rem);
+        line-height: 1.65;
+    }
+
+    body.page-areas .areas-body { flex: 1; min-height: 0; display: flex; }
+    body.page-areas .areas-explorer { flex: 1; min-height: 0; }
+
+    /* El clamp por vh queda como piso; acá el carrusel toma el resto
+       exacto del espacio, igual para las tres categorías. */
+    body.page-areas .areas-carousel-wrap { height: 100%; }
+    body.page-areas .areas-selector { height: 100%; }
+
+    /* --- Pie compacto --- */
+    body.page-areas .site-footer { padding: clamp(0.5rem, 1.4vh, 1.1rem) 0; }
+    body.page-areas .footer-inner { gap: clamp(0.5rem, 1.4vh, 1.2rem); }
+    body.page-areas .footer-legal { padding-top: clamp(0.4rem, 1vh, 0.8rem); }
+}
+
+/* Fuera de ese rango, Áreas se desplaza con normalidad */
+@media (max-width: 1024px), (max-height: 619px) {
+    body.page-areas { overflow-y: auto; }
 }
 
 /* Nota de contacto */

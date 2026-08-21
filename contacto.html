@@ -88,7 +88,18 @@
                     </div>
 
                     <div class="contact-form-col">
-                        <form class="glass-form">
+                        <form class="glass-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+                            <!-- Clave pública de Web3Forms: identifica a qué casilla se
+                                 entrega el mensaje. No es una contraseña ni da acceso a
+                                 nada; el envío del mail ocurre en el servidor de ellos. -->
+                            <input type="hidden" name="access_key" value="b5c34b30-042e-452c-89c9-f41a214b2a25">
+                            <input type="hidden" name="subject" value="Nuevo mensaje desde mizarweb.com.ar">
+                            <input type="hidden" name="from_name" value="Formulario Mizar Web">
+
+                            <!-- Trampa anti-spam: invisible para personas. Si viene
+                                 completo, lo cargó un bot y Web3Forms lo descarta. -->
+                            <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
                             <div class="form-group">
                                 <input type="text" id="cf-nombre" name="nombre" required placeholder=" ">
                                 <label for="cf-nombre">Nombre</label>
@@ -110,7 +121,10 @@
                                 <textarea id="cf-mensaje" name="mensaje" required placeholder=" "></textarea>
                                 <label for="cf-mensaje">Mensaje</label>
                             </div>
-                            <button type="submit" class="btn-primary full-width" data-label="Enviar Mensaje"><span>Enviar Mensaje</span></button>
+                            <button type="submit" class="btn-primary full-width" id="cfSubmit" data-label="Enviar Mensaje"><span>Enviar Mensaje</span></button>
+
+                            <p class="form-status" id="cfStatus" role="status" aria-live="polite" hidden></p>
+                            <p class="form-security-note">✓ Formulario seguro. Tus datos se envían encriptados.</p>
                         </form>
                     </div>
                 </div>

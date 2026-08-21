@@ -69,67 +69,59 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('active')) toggleMobileMenu();
     });
 
-    // --- 3. ÁREAS: TARJETAS CON PANEL DESPLEGABLE ---
-    const expandables = document.querySelectorAll('[data-expandable]');
-    if (expandables.length) {
-        const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-        const allCards = Array.from(expandables);
+    // --- 3. ÁREAS: SELECTOR DE CATEGORÍAS DEL CARRUSEL ---
+    const areasSelector = document.querySelector('.areas-selector');
+    if (areasSelector) {
+        const catBtns = Array.from(areasSelector.querySelectorAll('.areas-cat-btn'));
+        const areasViewport = document.querySelector('.areas-carousel');
+        const areasTracks = areasViewport ? Array.from(areasViewport.querySelectorAll('.areas-carousel-track')) : [];
 
-        // Sólo una tarjeta fijada a la vez: al abrir una se cierra la anterior
-        const closeOthers = (keep) => {
-            allCards.forEach(other => {
-                if (other === keep) return;
-                delete other.dataset.pinned;
-                other.classList.remove('is-open');
-                const t = other.querySelector('.area-toggle');
-                if (t) t.setAttribute('aria-expanded', 'false');
-            });
-        };
+        catBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
 
-        expandables.forEach(card => {
-            const toggle = card.querySelector('.area-toggle');
-            if (!toggle) return;
-
-            const setOpen = (open) => {
-                card.classList.toggle('is-open', open);
-                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-            };
-
-            // El clic "fija" la tarjeta abierta. El estado se decide por
-            // el pin y no por la clase, porque en escritorio el hover ya
-            // pudo haberla abierto (y el foco del botón también).
-            toggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const pinned = card.dataset.pinned === '1';
-                closeOthers(card);
-                if (pinned) { delete card.dataset.pinned; setOpen(false); }
-                else { card.dataset.pinned = '1'; setOpen(true); }
-            });
-
-            // En táctil, tocar la tarjeta (no sólo el botón) también la abre
-            if (!canHover) {
-                card.addEventListener('click', (e) => {
-                    if (e.target.closest('.area-toggle')) return;
-                    const open = card.classList.contains('is-open');
-                    closeOthers(card);
-                    if (open) { delete card.dataset.pinned; setOpen(false); }
-                    else { card.dataset.pinned = '1'; setOpen(true); }
+                catBtns.forEach(b => {
+                    const active = b === btn;
+                    b.classList.toggle('is-active', active);
+                    b.setAttribute('aria-selected', active ? 'true' : 'false');
                 });
-            }
 
-            if (canHover) {
-                card.addEventListener('pointerenter', () => setOpen(true));
-                card.addEventListener('pointerleave', () => {
-                    if (!card.dataset.pinned) setOpen(false);
+                areasTracks.forEach(track => {
+                    const match = track.dataset.panel === category;
+                    track.hidden = !match;
+                    if (!match) return;
+
+                    // Vuelve a disparar la entrada del panel
+                    track.style.animation = 'none';
+                    void track.offsetWidth;
+                    track.style.animation = '';
+
+                    // Red de seguridad: si el observador de entrada nunca vio
+                    // estas tarjetas (estaban en display:none al cargar la
+                    // página), se revelan igual al mostrar el panel.
+                    track.querySelectorAll('[data-anim]:not(.an-in)').forEach(el => el.classList.add('an-in'));
                 });
-            }
 
-            // Accesible por teclado: al enfocar el botón se muestra el panel
-            toggle.addEventListener('focus', () => setOpen(true));
-            card.addEventListener('focusout', (e) => {
-                if (!card.dataset.pinned && !card.contains(e.relatedTarget)) setOpen(false);
+                if (areasViewport) areasViewport.scrollTo({ left: 0, behavior: 'auto' });
             });
         });
+
+        // Rueda vertical del mouse -> desplazamiento horizontal del carrusel
+        // (mismo criterio que el riel de proyectos; en la versión apilada
+        // de mobile no hace nada porque no hay overflow horizontal).
+        if (areasViewport) {
+            areasViewport.addEventListener('wheel', (e) => {
+                const max = areasViewport.scrollWidth - areasViewport.clientWidth;
+                if (max <= 1) return;
+                const d = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+                if (!d) return;
+                const atStart = areasViewport.scrollLeft <= 0 && d < 0;
+                const atEnd   = areasViewport.scrollLeft >= max - 1 && d > 0;
+                if (atStart || atEnd) return;   // dejamos que siga la página
+                e.preventDefault();
+                areasViewport.scrollLeft += d;
+            }, { passive: false });
+        }
     }
 
     // --- 4. CARRUSEL DE RESEÑAS DEL INICIO (auto 6s + rueda del mouse) ---
@@ -244,6 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const stageDesc  = document.getElementById('pjStageDesc');
         const stageIndex = document.getElementById('pjStageIndex');
         const stageTotal = document.getElementById('pjStageTotal');
+        const stageCta   = document.getElementById('pjStageCta');
         const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
         const arrowPrev  = document.querySelector('.pj-rail-arrow.prev');
         const arrowNext  = document.querySelector('.pj-rail-arrow.next');
@@ -278,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (stageTag && tag)    stageTag.textContent   = tag.textContent;
             if (stageTitle && ttl)  stageTitle.textContent = ttl.textContent;
             if (stageDesc && desc)  stageDesc.textContent  = desc.textContent;
+            if (stageCta) stageCta.href = node.dataset.url || '#';
             if (stage) stage.style.setProperty('--card-fallback', node.style.getPropertyValue('--card-fallback'));
 
             const list = visibleNodes();
@@ -341,6 +335,22 @@ document.addEventListener('DOMContentLoaded', () => {
             viewport.addEventListener('scroll', syncEdges, { passive: true });
             window.addEventListener('resize', syncEdges);
             syncEdges();
+        }
+
+        // Deslizar con el dedo sobre el escenario grande para cambiar de
+        // proyecto (mobile/tablet). El cambio de contenido ya dispara la
+        // transición suave de select() (clase is-swapping).
+        if (stage) {
+            let sStartX = 0, sStartY = 0;
+            stage.addEventListener('touchstart', (e) => {
+                sStartX = e.touches[0].clientX;
+                sStartY = e.touches[0].clientY;
+            }, { passive: true });
+            stage.addEventListener('touchend', (e) => {
+                const dx = e.changedTouches[0].clientX - sStartX;
+                const dy = e.changedTouches[0].clientY - sStartY;
+                if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) step(dx < 0 ? 1 : -1);
+            });
         }
 
         // Filtros por categoría
@@ -549,6 +559,75 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSummary();
     }
 
+    // --- 7b. FORMULARIO DE CONTACTO (envío sin recargar la página) ---
+    // El sitio es estático (GitHub Pages): no hay servidor propio que pueda
+    // mandar un mail. El formulario hace POST a Web3Forms, que es quien lo
+    // entrega a la casilla. Acá sólo interceptamos el envío para dar
+    // respuesta en pantalla en vez de saltar a otra página.
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        const statusBox = document.getElementById('cfStatus');
+        const submitBtn = document.getElementById('cfSubmit');
+        const btnLabel  = submitBtn ? (submitBtn.querySelector('.lbl-a') || submitBtn.querySelector('span')) : null;
+        const originalLabel = btnLabel ? btnLabel.textContent : 'Enviar Mensaje';
+        let sending = false;
+
+        function setStatus(text, kind) {
+            if (!statusBox) return;
+            statusBox.textContent = text;
+            statusBox.classList.remove('is-ok', 'is-error', 'is-info');
+            if (kind) statusBox.classList.add('is-' + kind);
+            statusBox.hidden = !text;
+        }
+
+        function setBusy(state) {
+            sending = state;
+            if (submitBtn) {
+                submitBtn.disabled = state;
+                submitBtn.classList.toggle('is-sending', state);
+            }
+            if (btnLabel) btnLabel.textContent = state ? 'Enviando…' : originalLabel;
+        }
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            if (sending) return;
+
+            // Validación propia: novalidate desactiva los globos del navegador
+            // para poder mostrar el aviso con el estilo del sitio.
+            if (!contactForm.checkValidity()) {
+                setStatus('Completá nombre, email y mensaje para poder enviarlo.', 'error');
+                const firstBad = contactForm.querySelector(':invalid');
+                if (firstBad) firstBad.focus();
+                return;
+            }
+
+            setBusy(true);
+            setStatus('Enviando tu mensaje…', 'info');
+
+            try {
+                const res = await fetch(contactForm.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(contactForm)
+                });
+                const data = await res.json().catch(() => ({}));
+
+                if (res.ok && data.success) {
+                    contactForm.reset();
+                    setStatus('¡Listo! Recibimos tu mensaje y te respondemos a la brevedad.', 'ok');
+                } else {
+                    setStatus('No pudimos enviarlo. Escribinos por WhatsApp y lo resolvemos.', 'error');
+                }
+            } catch (err) {
+                // Sin conexión, o el navegador bloqueó la petición.
+                setStatus('No hay conexión con el servidor. Probá de nuevo o escribinos por WhatsApp.', 'error');
+            } finally {
+                setBusy(false);
+            }
+        });
+    }
+
     // --- 8. PROYECTOS: ARRASTRAR EL RIEL PARA DESPLAZARLO ---
     const portfolioScroll = document.querySelector('.pj-rail-viewport');
     if (portfolioScroll) {
@@ -724,6 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { sel: '.title-about-hero', anims: ['blurRise'], d: 0.46, step: 0.12, dur: 0.75 },
         { sel: '.founder-card', anims: ['glassSlideUp'], d: 0.58, step: 0.10, dur: 0.8 },
         { sel: '.about-description', anims: ['blurRise'], d: 0.62, dur: 0.85 },
+        { sel: '.pillar-item', anims: ['glassSlideUp'], d: 0.66, step: 0.08, dur: 0.75 },
         { sel: '.reviews-rail', anims: ['glassSlideUp'], d: 0.70, dur: 0.9 },
 
         /* --- Títulos genéricos --- */
@@ -964,8 +1044,8 @@ document.addEventListener('DOMContentLoaded', () => {
         indexAll('.mob-nav-btn');
         indexAll('.mobile-social-row a');
         indexAll('.service-icon');
-        indexAll('.area-grid-skills .area-card i');
-        indexAll('.area-grid-tools .area-card i');
+        indexAll('.areas-carousel-track[data-panel="habilidades"] .area-card i');
+        indexAll('.areas-carousel-track[data-panel="herramientas"] .area-card i');
         indexAll('.method i');
         indexAll('.footer-links a');
 
@@ -993,7 +1073,7 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Ondas al hacer clic sobre botones (efecto material sutil) */
         if (!REDUCED) {
             document.addEventListener('pointerdown', function (e) {
-                var t = e.target.closest ? e.target.closest('.btn-primary, .btn-secondary, .filter-btn, .pj-rail-arrow, .cal-cell, .slot-btn, .area-toggle') : null;
+                var t = e.target.closest ? e.target.closest('.btn-primary, .btn-secondary, .filter-btn, .pj-rail-arrow, .cal-cell, .slot-btn, .areas-cat-btn') : null;
                 if (!t) return;
                 var r = t.getBoundingClientRect();
                 var ink = document.createElement('span');

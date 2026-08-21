@@ -79,21 +79,21 @@
                 <div class="pj-observatory" id="pjObservatory">
 
                     <!-- ESCENARIO -->
-                    <article class="pj-stage" id="pjStage" aria-live="polite">
+                    <article class="pj-stage" id="pjStage" aria-live="polite" data-no-swipe>
                         <div class="pj-stage-media">
                             <div class="pj-stage-frame">
-                                <img id="pjStageImg" src="images/images-proyects/item.amatista.png" alt="Hotel Amatista">
+                                <img id="pjStageImg" src="images\images-proyects\item-akconsulting.png" alt="AK Consulting">
                             </div>
                             <span class="pj-stage-grid" aria-hidden="true"></span>
                         </div>
                         <div class="pj-stage-body">
                             <div class="pj-stage-meta">
-                                <span class="overlay-tag" id="pjStageTag">Landing Page</span>
-                                <span class="pj-stage-counter"><b id="pjStageIndex">01</b><i aria-hidden="true">/</i><span id="pjStageTotal">13</span></span>
+                                <span class="overlay-tag" id="pjStageTag">Institucional</span>
+                                <span class="pj-stage-counter"><b id="pjStageIndex">01</b><i aria-hidden="true">/</i><span id="pjStageTotal">16</span></span>
                             </div>
-                            <h3 class="pj-stage-title" id="pjStageTitle">Hotel Amatista</h3>
-                            <p class="pj-stage-desc" id="pjStageDesc">Plataforma de reservas con disponibilidad en tiempo real e integración de pagos.</p>
-                            <span class="card-cta" id="pjStageCta">Ver proyecto <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                            <h3 class="pj-stage-title" id="pjStageTitle">AK Consulting</h3>
+                            <p class="pj-stage-desc" id="pjStageDesc">Sitio institucional para consultora de mejora continua y sistemas de gestión ISO, con formación y casos de trabajo.</p>
+                            <a class="card-cta" id="pjStageCta" href="https://akconsulting.com.ar" target="_blank" rel="noopener noreferrer">Ver proyecto <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </article>
 
@@ -105,7 +105,28 @@
                             <span class="pj-rail-line" aria-hidden="true"></span>
                             <ul class="pj-rail" id="pjRail" role="listbox" aria-label="Proyectos" tabindex="0">
 
-                                <li class="pj-node is-active" data-category="landingpage" role="option" aria-selected="true" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a2540 0%, #1a4a7a 100%);">
+
+                                <li class="pj-node is-active" data-category="institucional" data-url="https://akconsulting.com.ar/" role="option" aria-selected="true" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #3a2f1a 0%, #6b5228 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-akconsulting.png" alt="AK Consulting" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Institucional</span>
+                                        <h4>AK Consulting</h4>
+                                        <p class="pj-node-desc">Sitio institucional para consultora de mejora continua y sistemas de gestión ISO, con formación y casos de trabajo.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="linkhub" data-url="https://estudioymr.github.io/EstudioYMR/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #4a3a10 0%, #8a6b20 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-estudioymr.png" alt="Estudio YMR" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Linkhub</span>
+                                        <h4>Estudio YMR</h4>
+                                        <p class="pj-node-desc">Tarjeta de enlaces para contadora pública, con accesos directos por tipo de cliente y tipo de trámite.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="landingpage" data-url="https://amatistahotel.com" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a2540 0%, #1a4a7a 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item.amatista.png" alt="Hotel Amatista" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -115,7 +136,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0d3349 0%, #0a4a6e 100%);">
+                                <li class="pj-node" data-category="institucional" data-url="https://guarderianauticachascomus.com" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0d3349 0%, #0a4a6e 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item.chascomus.png" alt="Guardería Náutica" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -125,7 +146,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="onepage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0d1f0d 0%, #1a3d1a 100%);">
+                                <li class="pj-node" data-category="onepage" data-url="https://facuvillalbaweb.github.io/GimnasioFitlife/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0d1f0d 0%, #1a3d1a 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-fitlife.png" alt="FitLife Gym" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -135,7 +156,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #1a1a0d 0%, #2e2e10 100%);">
+                                <li class="pj-node" data-category="institucional" data-url="https://facuvillalbaweb.github.io/Rodriguez-Asociados/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #1a1a0d 0%, #2e2e10 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-abogados.png" alt="Estudio Jurídico" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -145,7 +166,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a2a40 0%, #0f4060 100%);">
+                                <li class="pj-node" data-category="institucional" data-url="https://facuvillalbaweb.github.io/turismoarg/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a2a40 0%, #0f4060 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-turismoarg.png" alt="Turismo Arg" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -155,7 +176,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="landingpage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #2a1a00 0%, #4a3000 100%);">
+                                <li class="pj-node" data-category="landingpage" data-url="https://facuvillalbaweb.github.io/LandingEbookCocina/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #2a1a00 0%, #4a3000 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-cocina.png" alt="Ebook Cocina" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -165,7 +186,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="linkhub" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #050a14 0%, #0a1428 100%);">
+                                <li class="pj-node" data-category="linkhub" data-url="https://tucompaniaenusa.github.io/TuCompaniaEnUSA/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #050a14 0%, #0a1428 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-companiausa.png" alt="Tu Compañía en USA" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -175,7 +196,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="ecommerce" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #001a2e 0%, #00304d 100%);">
+                                <li class="pj-node" data-category="ecommerce" data-url="https://guarderianauticachascomus.com" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #001a2e 0%, #00304d 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item.chascomus.png" alt="Náutica Chascomús" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -185,7 +206,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="onepage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #14050a 0%, #2e0a1a 100%);">
+                                <li class="pj-node" data-category="onepage" data-url="https://facuvillalbaweb.github.io/GimnasioBlackforce/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #14050a 0%, #2e0a1a 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-blackforce.png" alt="Blackforce Training" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -195,7 +216,17 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a3020 0%, #0f5a38 100%);">
+                                <li class="pj-node" data-category="linkhub" data-url="https://contanetestudio.github.io/EstudioContanet/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #4a1a28 0%, #8a3550 100%);">
+                                    <span class="pj-node-star" aria-hidden="true"></span>
+                                    <div class="pj-node-thumb"><img src="images/images-proyects/item-contanet.png" alt="Estudio Contanet" loading="lazy"></div>
+                                    <div class="pj-node-info">
+                                        <span class="pj-node-tag overlay-tag">Linkhub</span>
+                                        <h4>Estudio Contanet</h4>
+                                        <p class="pj-node-desc">Tarjeta de enlaces para estudio contable, con consulta directa por WhatsApp y acceso a cada servicio.</p>
+                                    </div>
+                                </li>
+
+                                <li class="pj-node" data-category="institucional" data-url="https://facuvillalbaweb.github.io/Caba-aCalamuchita/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a3020 0%, #0f5a38 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-calamuchita.png" alt="Turismo Calamuchita" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -205,7 +236,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="onepage" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #1a0a2e 0%, #33104a 100%);">
+                                <li class="pj-node" data-category="onepage" data-url="https://misticagym.com" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #1a0a2e 0%, #33104a 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-misticagym.png" alt="Mística Gym" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -215,7 +246,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a1a30 0%, #16305a 100%);">
+                                <li class="pj-node" data-category="institucional" data-url="https://psicologafernanda.carrd.co/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #0a1a30 0%, #16305a 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-psicologa.jpg" alt="Consultorio de Psicología" loading="lazy"></div>
                                     <div class="pj-node-info">
@@ -225,7 +256,7 @@
                                     </div>
                                 </li>
 
-                                <li class="pj-node" data-category="institucional" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #201030 0%, #3a1a52 100%);">
+                                <li class="pj-node" data-category="institucional" data-url="https://facuvillalbaweb.github.io/PsicopedagogaPaula/" role="option" aria-selected="false" tabindex="-1" style="--card-fallback: linear-gradient(135deg, #201030 0%, #3a1a52 100%);">
                                     <span class="pj-node-star" aria-hidden="true"></span>
                                     <div class="pj-node-thumb"><img src="images/images-proyects/item-psicopedagoga.png" alt="Gabinete Psicopedagógico" loading="lazy"></div>
                                     <div class="pj-node-info">

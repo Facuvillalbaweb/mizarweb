@@ -11,7 +11,7 @@
     --accent-purple:  #7b2cbf;
     --text-main:      #e6f1ff;
     --text-muted:     #cdd0d8;
-    --glass-bg:       rgba(17, 34, 64, 0.75);
+    --glass-bg:       #050a14;
     --glass-border:   rgba(100, 255, 218, 0.12);
     --font-title:     'Orbitron', sans-serif;
     --font-body:      'Montserrat', sans-serif;
@@ -42,6 +42,7 @@ body {
     line-height: 1.7;
     min-height: 100vh;
     overflow-x: hidden;
+    cursor: default;
 }
 
 img { max-width: 100%; display: block; }
@@ -167,11 +168,11 @@ ul  { list-style: none; }
     z-index: -2;
 }
 
-.bg-gradient-home      { background: radial-gradient(circle at 50% 50%, #0a192f 0%, #020c1b 100%); }
-.bg-gradient-services  { background: radial-gradient(circle at 80% 20%, #112240 0%, #000000 100%); }
-.bg-gradient-portfolio { background: linear-gradient(to right, #050a14, #0f1c30); }
-.bg-gradient-about     { background: radial-gradient(circle at 20% 80%, #0f1c30 0%, #000000 100%); }
-.bg-gradient-contact   { background: linear-gradient(135deg, #020c1b 0%, #102a43 100%); }
+.bg-gradient-home      { background: radial-gradient(circle at 50% 50%, #050a14 0%, #050a14 100%); }
+.bg-gradient-services  { background: radial-gradient(circle at 80% 20%, #050a14 0%, #000000 100%); }
+.bg-gradient-portfolio { background: linear-gradient(to right, #050a14, #050a14); }
+.bg-gradient-about     { background: radial-gradient(circle at 20% 80%, #050a14 0%, #000000 100%); }
+.bg-gradient-contact   { background: linear-gradient(135deg, #050a14 0%, #050a14 100%); }
 
 /* ============================================================
    4. HEADER
@@ -646,12 +647,12 @@ ul  { list-style: none; }
    ============================================================ */
 
 
+
 /* ============================================================
    10. PROYECTOS — (constelación definida en la sección 15)
    ============================================================ */
 .overlay-tag {
     display: inline-block;
-    background: rgba(100, 255, 218, 0.1);
     border: 1px solid rgba(100, 255, 218, 0.25);
     color: var(--accent-cyan);
     font-size: 0.6rem;
@@ -2210,7 +2211,7 @@ body.menu-open { overflow: hidden; }
     text-align: start;
     isolation: isolate;
     transition: border-color 0.4s ease, box-shadow 0.5s ease, transform 0.5s var(--e-expo);
-    cursor: grab;
+
 }
 
 .reviews-rail:hover,
@@ -2425,8 +2426,8 @@ body.menu-open { overflow: hidden; }
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: rgba(17, 34, 64, 0.86);
-    border: 1px solid var(--glass-border);
+    background: #050a14;
+    border: 2px solid var(--glass-border);
     border-radius: var(--radius-soft);
     overflow: hidden;
     isolation: isolate;
@@ -2622,7 +2623,7 @@ body.menu-open { overflow: hidden; }
     gap: clamp(0.7rem, 1.4vw, 1.1rem);
     width: 100%;
     padding: clamp(0.9rem, 1.8vw, 1.3rem);
-    background: rgba(17, 34, 64, 0.86);
+    background: #050a14;
     border: 1px solid var(--glass-border);
     border-left: 3px solid transparent;
     border-radius: var(--radius-soft);
@@ -2679,7 +2680,7 @@ body.menu-open { overflow: hidden; }
     height: clamp(360px, 48vh, 520px);
     display: flex;
     flex-direction: column;
-    background: rgba(17, 34, 64, 0.5);
+    background: #050a14;
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: clamp(0.9rem, 1.8vw, 1.4rem);
@@ -2942,7 +2943,6 @@ body.menu-open { overflow: hidden; }
     overflow-x: auto;
     overflow-y: hidden;
     padding: 0 4px 10px;
-    cursor: grab;
     scrollbar-width: thin;
     -webkit-overflow-scrolling: touch;
     mask-image: linear-gradient(90deg, transparent 0, #000 44px, #000 calc(100% - 44px), transparent 100%);
@@ -3158,7 +3158,7 @@ body.menu-open { overflow: hidden; }
     border-radius: var(--radius-card);
     border: 1px solid rgba(37, 211, 102, 0.35);
     background:
-        linear-gradient(120deg, rgba(37, 211, 102, 0.14), rgba(17, 34, 64, 0.75) 55%);
+        linear-gradient(120deg, rgba(37, 211, 102, 0.14), #050a14 55%);
     overflow: hidden;
     isolation: isolate;
     transition: transform 0.45s var(--e-expo), border-color 0.4s ease, box-shadow 0.5s ease;
@@ -3213,14 +3213,6 @@ body.menu-open { overflow: hidden; }
 }
 
 .method-whatsapp:hover .wa-go { transform: translateX(5px); }
-
-.form-security-note, .form-footer-note {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 1rem;
-    opacity: 0.8;
-}
 
 /* --- Agenda --- */
 .scheduler {
@@ -3468,6 +3460,62 @@ body.menu-open { overflow: hidden; }
 }
 
 .sched-note { font-size: 0.7rem; color: var(--text-muted); opacity: 0.7; line-height: 1.6; }
+
+.sched-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 0.2rem;
+}
+
+.sched-emails { display: flex; flex-direction: column; }
+
+.sched-email-group { display: flex; align-items: flex-end; gap: 0.5rem; }
+.sched-email-group input { flex: 1; }
+
+.sched-email-remove {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 1.4rem;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 122, 122, 0.06);
+    color: #ffb3b3;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--e-back);
+}
+
+.sched-email-remove:hover {
+    background: rgba(255, 122, 122, 0.14);
+    border-color: rgba(255, 122, 122, 0.4);
+    transform: translateY(-1px);
+}
+
+.sched-add-email {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.5rem 0.9rem;
+    margin: -0.4rem 0 0.6rem;
+    border-radius: 999px;
+    border: 1px dashed var(--glass-border);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.sched-add-email:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    background: rgba(100, 255, 218, 0.06);
+}
 
 /* ------------------------------------------------------------
    15.6 PIE DE SITIO

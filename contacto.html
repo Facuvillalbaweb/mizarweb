@@ -92,7 +92,7 @@
                             <!-- Clave pública de Web3Forms: identifica a qué casilla se
                                  entrega el mensaje. No es una contraseña ni da acceso a
                                  nada; el envío del mail ocurre en el servidor de ellos. -->
-                            <input type="hidden" name="access_key" value="b5c34b30-042e-452c-89c9-f41a214b2a25">
+                            <input type="hidden" name="access_key" value="REEMPLAZAR-CON-TU-ACCESS-KEY">
                             <input type="hidden" name="subject" value="Nuevo mensaje desde mizarweb.com.ar">
                             <input type="hidden" name="from_name" value="Formulario Mizar Web">
 
@@ -111,10 +111,10 @@
                             <div class="form-group">
                                 <select id="cf-servicio" name="servicio" aria-label="Tipo de Servicio">
                                     <option value="" disabled selected>Tipo de Servicio</option>
-                                    <option value="Sitio Web">Desarrollo Web</option>
-                                    <option value="Inteligencia Artificial">Inteligencia Artificial</option>
-                                    <option value="Diseño Gráfico">Diseño Gráfico</option>
-                                    <option value="Otro">Otro</option>
+                                    <option value="web">Desarrollo Web</option>
+                                    <option value="ia">Inteligencia Artificial</option>
+                                    <option value="design">Diseño Gráfico</option>
+                                    <option value="other">Otro</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -124,7 +124,6 @@
                             <button type="submit" class="btn-primary full-width" id="cfSubmit" data-label="Enviar Mensaje"><span>Enviar Mensaje</span></button>
 
                             <p class="form-status" id="cfStatus" role="status" aria-live="polite" hidden></p>
-                            <p class="form-security-note">✓ Formulario seguro. Tus datos se envían encriptados.</p>
                         </form>
                     </div>
                 </div>
@@ -157,13 +156,38 @@
                             <h4 class="slots-title">Horarios <span id="slotDate" class="slots-date">— elegí un día</span></h4>
                             <div class="slot-list" id="slotList" role="group" aria-label="Horarios disponibles"></div>
 
+                            <div class="sched-details">
+                                <div class="form-group">
+                                    <input type="text" id="schedNombre" placeholder=" ">
+                                    <label for="schedNombre">Tu nombre</label>
+                                </div>
+
+                                <div class="form-group">
+                                    <select id="schedPlatform" aria-label="Plataforma para la videollamada">
+                                        <option value="Google Meet">Google Meet</option>
+                                        <option value="Zoom">Zoom</option>
+                                        <option value="Microsoft Teams">Microsoft Teams</option>
+                                        <option value="A definir">A definir</option>
+                                    </select>
+                                </div>
+
+                                <div class="sched-emails" id="schedEmails">
+                                    <div class="form-group sched-email-group">
+                                        <input type="email" class="sched-email-input" id="schedEmail1" placeholder=" ">
+                                        <label for="schedEmail1">Email para dar acceso a la reunión</label>
+                                    </div>
+                                </div>
+                                <button type="button" class="sched-add-email" id="schedAddEmail"><i class="fas fa-plus" aria-hidden="true"></i> Agregar otro participante</button>
+                            </div>
+
                             <div class="sched-summary" id="schedSummary" hidden>
                                 <i class="fas fa-calendar-check" aria-hidden="true"></i>
                                 <span id="schedSummaryText"></span>
                             </div>
 
-                            <a class="btn-primary full-width sched-confirm is-disabled" id="schedConfirm" href="https://wa.me/5493751340173" target="_blank" rel="noopener" aria-disabled="true" data-label="Confirmar reunión"><span>Confirmar reunión</span></a>
-                            <p class="sched-note">Al confirmar se abre WhatsApp con el mensaje ya redactado. No se reserva nada hasta que respondamos.</p>
+                            <button type="button" class="btn-primary full-width sched-confirm is-disabled" id="schedConfirm" aria-disabled="true" data-label="Confirmar reunión"><span>Confirmar reunión</span></button>
+                            <p class="form-status" id="schedStatus" role="status" aria-live="polite" hidden></p>
+                            <p class="sched-note">Al confirmar abrimos WhatsApp con los datos y además nos llega un aviso por mail con día, horario, plataforma y los emails para dar acceso. No se reserva nada hasta que respondamos.</p>
                         </div>
                     </div>
                 </div>

@@ -420,9 +420,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const calGrid = document.getElementById('calGrid');
     if (calGrid) {
         const WA_NUMBER = '5493751340173';
+        const SCHED_ACCESS_KEY = 'REEMPLAZAR-CON-TU-ACCESS-KEY';
         const MESES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
         const DIAS   = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
         const SLOTS  = ['09:00','10:00','11:00','12:00','14:00','15:00','16:00','17:00','18:00'];
+        const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         const calMonth    = document.getElementById('calMonth');
         const calPrev     = document.getElementById('calPrev');
@@ -432,6 +434,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const summary     = document.getElementById('schedSummary');
         const summaryText = document.getElementById('schedSummaryText');
         const confirmBtn  = document.getElementById('schedConfirm');
+        const confirmLbl  = confirmBtn ? (confirmBtn.querySelector('.lbl-a') || confirmBtn.querySelector('span')) : null;
+        const confirmOriginalLbl = confirmLbl ? confirmLbl.textContent : 'Confirmar reunión';
+        const schedStatus = document.getElementById('schedStatus');
+        const schedNombre   = document.getElementById('schedNombre');
+        const schedPlatform = document.getElementById('schedPlatform');
+        const schedEmails   = document.getElementById('schedEmails');
+        const schedAddEmail = document.getElementById('schedAddEmail');
+        let emailRowSeq = 1;
+        let schedSending = false;
 
         const today = new Date(); today.setHours(0, 0, 0, 0);
         const limit = new Date(today.getFullYear(), today.getMonth() + 4, 0); // 4 meses de agenda
@@ -525,8 +536,73 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // --- Emails de los participantes (el primero es obligatorio) ---
+        function getEmailInputs() {
+            return Array.prototype.slice.call(document.querySelectorAll('.sched-email-input'));
+        }
+
+        function getEmails() {
+            return getEmailInputs().map((el) => el.value.trim()).filter(Boolean);
+        }
+
+        function addEmailRow() {
+            emailRowSeq++;
+            const id = 'schedEmail' + emailRowSeq;
+
+            const group = document.createElement('div');
+            group.className = 'form-group sched-email-group';
+
+            const input = document.createElement('input');
+            input.type = 'email';
+            input.className = 'sched-email-input';
+            input.id = id;
+            input.placeholder = ' ';
+            input.addEventListener('input', updateSummary);
+
+            const label = document.createElement('label');
+            label.setAttribute('for', id);
+            label.textContent = 'Email adicional';
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.className = 'sched-email-remove';
+            removeBtn.setAttribute('aria-label', 'Quitar este participante');
+            removeBtn.innerHTML = '<i class="fas fa-times" aria-hidden="true"></i>';
+            removeBtn.addEventListener('click', () => { group.remove(); updateSummary(); });
+
+            group.appendChild(input);
+            group.appendChild(label);
+            group.appendChild(removeBtn);
+            if (schedEmails) schedEmails.appendChild(group);
+            input.focus();
+        }
+
+        if (schedAddEmail) schedAddEmail.addEventListener('click', addEmailRow);
+
+        const firstEmailInput = document.getElementById('schedEmail1');
+        if (firstEmailInput) firstEmailInput.addEventListener('input', updateSummary);
+
+        function setSchedStatus(text, kind) {
+            if (!schedStatus) return;
+            schedStatus.textContent = text;
+            schedStatus.classList.remove('is-ok', 'is-error', 'is-info');
+            if (kind) schedStatus.classList.add('is-' + kind);
+            schedStatus.hidden = !text;
+        }
+
+        function setSchedBusy(state) {
+            schedSending = state;
+            if (confirmBtn) {
+                confirmBtn.disabled = state;
+                confirmBtn.classList.toggle('is-sending', state);
+            }
+            if (confirmLbl) confirmLbl.textContent = state ? 'Enviando…' : confirmOriginalLbl;
+        }
+
         function updateSummary() {
-            const ready = !!(picked && pickedSlot);
+            const emails = getEmails();
+            const primaryOk = emails.length > 0 && EMAIL_RE.test(emails[0]);
+            const ready = !!(picked && pickedSlot && primaryOk);
 
             if (summary) summary.hidden = !ready;
             if (ready && summaryText) {
@@ -537,21 +613,67 @@ document.addEventListener('DOMContentLoaded', () => {
             if (confirmBtn) {
                 confirmBtn.classList.toggle('is-disabled', !ready);
                 confirmBtn.setAttribute('aria-disabled', ready ? 'false' : 'true');
-                if (ready) {
-                    const msg = '¡Hola Mizar Web! Quiero agendar una reunión el ' +
-                        DIAS[picked.getDay()] + ' ' + picked.getDate() + ' de ' + MESES[picked.getMonth()] +
-                        ' de ' + picked.getFullYear() + ' a las ' + pickedSlot + ' h.';
-                    confirmBtn.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-                } else {
-                    confirmBtn.removeAttribute('href');
-                }
             }
         }
 
         if (calPrev) calPrev.addEventListener('click', () => { cursor.setMonth(cursor.getMonth() - 1); renderMonth(); });
         if (calNext) calNext.addEventListener('click', () => { cursor.setMonth(cursor.getMonth() + 1); renderMonth(); });
-        if (confirmBtn) confirmBtn.addEventListener('click', (e) => {
-            if (confirmBtn.classList.contains('is-disabled')) e.preventDefault();
+
+        if (confirmBtn) confirmBtn.addEventListener('click', async () => {
+            if (confirmBtn.classList.contains('is-disabled') || schedSending) return;
+
+            const emails = getEmails();
+            if (!emails.length || !EMAIL_RE.test(emails[0])) {
+                setSchedStatus('Ingresá un email válido para poder darte acceso a la reunión.', 'error');
+                if (firstEmailInput) firstEmailInput.focus();
+                return;
+            }
+
+            const nombre    = (schedNombre && schedNombre.value.trim()) || 'Sin especificar';
+            const plataforma = schedPlatform ? schedPlatform.value : 'A definir';
+            const fechaTexto = DIAS[picked.getDay()] + ' ' + picked.getDate() + ' de ' + MESES[picked.getMonth()] + ' de ' + picked.getFullYear();
+
+            const waMsg = '¡Hola Mizar Web! Soy ' + nombre + '. Quiero agendar una reunión por ' + plataforma +
+                ' el ' + fechaTexto + ' a las ' + pickedSlot + ' h.';
+            const waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waMsg);
+
+            // Abrimos la pestaña ya (en blanco) para no perder el gesto del
+            // usuario: si esperáramos a que termine el fetch, el navegador
+            // podría bloquear la ventana por considerarla un popup. Le
+            // cargamos la URL real apenas la tengamos.
+            const waWindow = window.open('', '_blank', 'noopener');
+
+            setSchedBusy(true);
+            setSchedStatus('Enviando…', 'info');
+
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: SCHED_ACCESS_KEY,
+                        subject: 'Nueva reserva de reunión — Mizar Web',
+                        from_name: 'Agenda Mizar Web',
+                        nombre: nombre,
+                        fecha: fechaTexto,
+                        horario: pickedSlot + ' h (GMT-3)',
+                        plataforma: plataforma,
+                        email_principal: emails[0],
+                        participantes_adicionales: emails.slice(1).join(', ') || 'Ninguno',
+                        mensaje: 'Reserva agendada desde el sitio. Generar el link de ' + plataforma + ' e invitar a: ' + emails.join(', ')
+                    })
+                }).catch(() => null);
+
+                if (waWindow) waWindow.location.href = waUrl; else window.open(waUrl, '_blank', 'noopener');
+
+                if (res && res.ok) {
+                    setSchedStatus('¡Listo! Te abrimos WhatsApp para coordinar la reunión.', 'ok');
+                } else {
+                    setSchedStatus('Abrimos WhatsApp para coordinar. (No pudimos avisarnos por mail, pero tu mensaje de WhatsApp llega igual).', 'error');
+                }
+            } finally {
+                setSchedBusy(false);
+            }
         });
 
         renderMonth();
